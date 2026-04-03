@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Facebook Ad Preview — Kabo Organic</title>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Jost',sans-serif;background:#E4E6EB;min-height:100vh;display:flex;align-items:flex-start;justify-content:center;padding:40px 20px;gap:32px;flex-wrap:wrap}
+
+  .ad-wrapper{width:500px;max-width:100%}
+  .ad-label{font-size:11px;font-weight:600;color:#65676B;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:6px}
+  .ad-label i{color:#1877F2;font-size:13px}
+
+  .fb-post{background:white;border-radius:8px;box-shadow:0 1px 2px rgba(0,0,0,.1);overflow:hidden}
+
+  .post-header{padding:12px 16px;display:flex;align-items:center;gap:10px}
+  .page-avatar{width:40px;height:40px;border-radius:50%;background:#1A472A;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .page-avatar svg{width:24px;height:24px}
+  .page-info{flex:1}
+  .page-name{font-size:15px;font-weight:700;color:#050505}
+  .page-meta{font-size:12px;color:#65676B;display:flex;align-items:center;gap:4px}
+  .sponsored{color:#1877F2;font-weight:600;cursor:pointer}
+  .sponsored:hover{text-decoration:underline}
+  .more-btn{width:32px;height:32px;border-radius:50%;background:#E4E6EB;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0}
+  .more-btn i{color:#050505;font-size:12px}
+
+  .ad-image{width:100%;aspect-ratio:1.91/1;position:relative;overflow:hidden}
+  .ad-image img{width:100%;height:100%;object-fit:cover;display:block}
+  .ad-img-badge{position:absolute;top:12px;left:12px;background:rgba(0,0,0,.5);color:white;font-size:9px;font-weight:600;padding:3px 8px;border-radius:3px;letter-spacing:.5px;backdrop-filter:blur(4px);z-index:10}
+  .ad-img-cta{position:absolute;bottom:12px;right:12px;background:#1877F2;color:white;font-size:10px;font-weight:700;padding:6px 16px;border-radius:6px;cursor:pointer;letter-spacing:.5px;z-index:10;transition:background .15s}
+  .ad-img-cta:hover{background:#1565C0}
+
+  .post-text{padding:12px 16px}
+  .post-text p{font-size:15px;color:#050505;line-height:1.5}
+  .hl{color:#1A472A;font-weight:700}
+  .check{color:#2E7D32}
+  .st{font-weight:700;color:#050505;margin-top:10px;margin-bottom:4px}
+  .analysis{font-size:14px;color:#050505;line-height:1.7;margin-top:4px}
+  .contact{font-size:13px;color:#65676B;margin-top:10px;line-height:1.6}
+  .tagline{font-size:13px;color:#65676B;margin-top:6px;font-style:italic}
+  .hashtag{font-size:13px;color:#1877F2;margin-top:4px}
+
+  .reactions-bar{padding:8px 16px;border-top:1px solid #E4E6EB;display:flex;align-items:center;justify-content:space-between}
+  .reactions-left{display:flex;align-items:center;gap:6px}
+  .reaction-icons{display:flex}
+  .reaction-icons span{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;margin-right:-4px;border:2px solid white}
+  .r-like{background:#1877F2}.r-love{background:#E4263C}.r-care{background:#F7B924}
+  .reaction-count{font-size:15px;color:#65676B}
+  .reactions-right{font-size:15px;color:#65676B;cursor:pointer}
+  .reactions-right:hover{text-decoration:underline}
+  .action-btns{padding:4px 8px;border-top:1px solid #E4E6EB;display:flex}
+  .action-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:8px 0;cursor:pointer;border-radius:6px;transition:background .15s}
+  .action-btn:hover{background:#F2F2F2}
+  .action-btn i{font-size:18px;color:#65676B}
+  .action-btn span{font-size:15px;font-weight:600;color:#65676B}
+  .sponsored-line{padding:8px 16px 12px;display:flex;align-items:center;gap:6px}
+  .sponsored-line i{font-size:10px;color:#65676B}
+  .sponsored-line span{font-size:11px;color:#65676B}
+
+  /* ===== MOBILE ===== */
+  .mobile-label{font-size:11px;font-weight:600;color:#65676B;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:6px}
+  .mobile-label i{color:#1877F2;font-size:13px}
+  .mobile-frame{width:375px;max-width:100%;background:#1C1E21;border-radius:36px;padding:12px;box-shadow:0 8px 40px rgba(0,0,0,.3)}
+  .mobile-screen{background:white;border-radius:26px;overflow:hidden}
+  .mobile-statusbar{background:#1C1E21;padding:8px 20px 4px;display:flex;justify-content:space-between;align-items:center}
+  .mobile-statusbar span{font-size:12px;color:white;font-weight:600}
+  .mobile-statusbar-icons{display:flex;gap:5px;align-items:center}
+  .mobile-statusbar-icons i{font-size:11px;color:white}
+  .mobile-notch{width:120px;height:28px;background:#1C1E21;border-radius:0 0 18px 18px;margin:0 auto;position:relative;top:-1px}
+
+  .m-post{padding:0}
+  .m-post-header{padding:10px 14px;display:flex;align-items:center;gap:8px}
+  .m-avatar{width:32px;height:32px;border-radius:50%;background:#1A472A;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .m-avatar svg{width:18px;height:18px}
+  .m-name{font-size:13px;font-weight:700;color:#E4E6EB}
+  .m-meta{font-size:11px;color:#B0B3B8}
+  .m-sponsored{color:#5B9CF6;font-weight:600}
+  .m-more{margin-left:auto;color:#B0B3B8;font-size:16px;cursor:pointer}
+
+  .m-image{width:100%;aspect-ratio:1/1;position:relative;overflow:hidden}
+  .m-image img{width:100%;height:100%;object-fit:cover;display:block}
+  .m-img-badge{position:absolute;top:8px;left:8px;background:rgba(0,0,0,.5);color:white;font-size:7px;font-weight:600;padding:2px 6px;border-radius:2px;letter-spacing:.3px;backdrop-filter:blur(4px);z-index:10}
+  .m-img-cta{position:absolute;bottom:8px;right:8px;background:#1877F2;color:white;font-size:8px;font-weight:700;padding:4px 12px;border-radius:4px;z-index:10}
+
+  .m-text{padding:10px 14px}
+  .m-text p{font-size:13px;color:#E4E6EB;line-height:1.45}
+  .m-text .hl{color:#7BC67E;font-weight:700}
+  .m-text .check{color:#7BC67E}
+  .m-text .st{font-weight:700;color:#E4E6EB;margin-top:8px;margin-bottom:3px}
+  .m-text .analysis{font-size:12px;color:#E4E6EB;line-height:1.6;margin-top:3px}
+  .m-text .contact{font-size:11px;color:#B0B3B8;margin-top:8px;line-height:1.5}
+  .m-text .tagline{font-size:11px;color:#B0B3B8;margin-top:4px;font-style:italic}
+  .m-text .hashtag{font-size:11px;color:#5B9CF6;margin-top:3px}
+
+  .m-react{padding:6px 14px;display:flex;align-items:center;justify-content:space-between}
+  .m-react-icons{display:flex;align-items:center;gap:4px}
+  .m-react-icons span{width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;margin-right:-3px;border:1.5px solid #1C1E21}
+  .m-react-count{font-size:12px;color:#B0B3B8}
+  .m-actions{padding:2px 6px 4px;border-top:1px solid #3E4042;display:flex}
+  .m-action{flex:1;display:flex;align-items:center;justify-content:center;gap:4px;padding:7px 0;cursor:pointer;border-radius:6px}
+  .m-action:hover{background:#3E4042}
+  .m-action i{font-size:16px;color:#B0B3B8}
+  .m-action span{font-size:12px;font-weight:600;color:#B0B3B8}
+  .m-spon-line{padding:4px 14px 8px;display:flex;align-items:center;gap:4px}
+  .m-spon-line i{font-size:8px;color:#B0B3B8}
+  .m-spon-line span{font-size:9px;color:#B0B3B8}
+
+  /* Placeholder if image missing */
+  .img-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,#F5F0E6,#DDD5C4);gap:12px}
+  .img-placeholder i{font-size:48px;color:#C8A96E;opacity:.4}
+  .img-placeholder span{font-size:13px;color:#8B5E3C;opacity:.6;letter-spacing:1px}
+
+  @media(max-width:920px){body{padding:20px 12px}.ad-wrapper{width:100%}}
+</style>
+</head>
+<body>
+
+<!-- ===== DESKTOP ===== -->
+<div class="ad-wrapper">
+  <p class="ad-label"><i class="fab fa-facebook"></i> Desktop Feed — Ad Preview</p>
+  <div class="fb-post">
+    <div class="post-header">
+      <div class="page-avatar">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><circle cx="100" cy="100" r="97" fill="none" stroke="white" stroke-width="2.5"/><line x1="100" y1="108" x2="100" y2="74" stroke="white" stroke-width="2.8" stroke-linecap="round"/><ellipse cx="85" cy="84" rx="13" ry="6.5" fill="white" transform="rotate(-38 85 84)"/><ellipse cx="115" cy="84" rx="13" ry="6.5" fill="white" transform="rotate(38 115 84)"/></svg>
+      </div>
+      <div class="page-info">
+        <div class="page-name">Kabo Organic Fertilizers</div>
+        <div class="page-meta"><span class="sponsored">Sponsored</span> · <span>🌱</span></div>
+      </div>
+      <div class="more-btn"><i class="fas fa-ellipsis-h"></i></div>
+    </div>
+
+    <div class="ad-image">
+      <img src="fertiliser.jpeg" alt="Kabo Organic Fertilizer 50kg bag" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="img-placeholder" style="display:none"><i class="fas fa-image"></i><span>fertiliser.jpeg</span></div>
+      <span class="ad-img-badge">Sponsored</span>
+      <span class="ad-img-cta">Send Message</span>
+    </div>
+
+    <div class="post-text">
+      <p><span class="hl">SOIL ISN'T DIRT. IT'S ALIVE. AND YOUR CROPS ARE HUNGRY.</span></p>
+
+      <p style="margin-top:8px">Let's talk about something most farmers overlook — soil health.</p>
+
+      <p style="margin-top:6px">Most of us plant, apply chemical fertilizers, harvest, and repeat season after season. Meanwhile the soil is dying. Structure is breaking down. Microbes are gone. Yields are dropping. The land that fed your parents is barely feeding you.</p>
+
+      <p style="margin-top:6px">That's exactly why we made <span class="hl">Kabo Organic Fertilizer</span>.</p>
+
+      <p class="st">What is it?</p>
+      <p>It's a 100% organic, granular fertilizer — not a chemical cocktail. It's made from decomposed organic matter that's been properly composted and laboratory tested. Every single batch.</p>
+
+      <p class="st">What's actually in it?</p>
+      <p>This isn't guesswork. Here's the guaranteed analysis:</p>
+      <div class="analysis">
+        <p>🌿 Organic Matter: 18–20%</p>
+        <p>🌿 Total Nitrogen (N): 0.4%</p>
+        <p>🌿 Available Phosphorus (P): 28–30 ppm</p>
+        <p>🌿 Potassium (K): 4200–4500 ppm</p>
+        <p>🌿 Calcium (Ca): 1700–2300 ppm</p>
+        <p>🌿 Magnesium (Mg): 1700–2200 ppm</p>
+        <p>🌿 pH: 8.9–9.0</p>
+        <p>🌿 Heavy Metals: Within safe agricultural limits</p>
+      </div>
+
+      <p class="st">What does it DO for your soil?</p>
+      <p><span class="check">✅</span> Improves soil fertility — feeds the soil so the soil can feed your crops</p>
+      <p><span class="check">✅</span> Enhances microbial activity — brings back the bacteria and organisms that make soil WORK</p>
+      <p><span class="check">✅</span> Improves soil structure — better water retention, better drainage, less crusting</p>
+      <p><span class="check">✅</span> Helps balance soil pH — so nutrients actually become available to your plants</p>
+      <p><span class="check">✅</span> Safe and environmentally friendly — no chemical runoff into your water, no poisoned soil for the next generation</p>
+
+      <p class="st">What crops can you use it on?</p>
+      <p>Everything.</p>
+      <p>🥬 Vegetables — 200–400g per planting hole</p>
+      <p>🌽 Maize — 1–2 handfuls per planting hole</p>
+      <p>🍎 Fruit Trees — 2–5kg around the tree, twice a year</p>
+      <p>🌱 Seedlings — mix 1 part fertilizer with 3 parts soil</p>
+      <p>🌾 Field Crops — 1–2 tons per hectare</p>
+
+      <p class="st">Best used as:</p>
+      <p><span class="check">✔</span> Basal dressing</p>
+      <p><span class="check">✔</span> Soil conditioner</p>
+      <p><span class="check">✔</span> All-purpose organic fertilizer</p>
+
+      <p class="st">Why this matters right now:</p>
+      <p>Chemical fertilizers give you a quick boost then destroy your soil over time. Organic fertilizer works slower but builds your soil UP. Year after year, your land gets better. Your yields get more consistent. Your soil holds more water during drought. Your crops resist pests better because the soil is actually healthy.</p>
+
+      <p style="margin-top:6px">One 50kg bag covers a significant area depending on your crop and application rate. And because it's slow-release, it keeps feeding your soil for weeks — not days like chemicals.</p>
+
+      <p style="margin-top:6px">This isn't new science. This is how farming worked for generations before chemicals took over. We just made it easier to use.</p>
+
+      <div class="contact">📍 Proudly produced by Kabo Farmyard Fertilizer Pty Ltd<br>📍 Mazenod, Halekhobanyane, Maseru, Lesotho<br>📞 +266 50131461 / 62779665<br>📧 kabofarmyardfertilizer@gmail.com</div>
+      <div class="tagline">Restoring Soil. Growing the Nation.</div>
+      <div class="hashtag">#OrganicFarming #SoilHealth #LesothoFarming #KaboOrganic #SustainableAgriculture #Fertilizer #FarmersFirst #HealthySoilHealthyCrops #OrganicMatter #SoilFertility #GrowOrganic #AgricultureLesotho</div>
+    </div>
+
+    <div class="reactions-bar">
+      <div class="reactions-left"><div class="reaction-icons"><span class="r-like">👍</span><span class="r-love">❤️</span><span class="r-care">🥺</span></div><span class="reaction-count">247</span></div>
+      <span class="reactions-right">38 comments</span>
+    </div>
+    <div class="action-btns">
+      <div class="action-btn"><i class="far fa-thumbs-up"></i><span>Like</span></div>
+      <div class="action-btn"><i class="far fa-comment"></i><span>Comment</span></div>
+      <div class="action-btn"><i class="far fa-share-square"></i><span>Share</span></div>
+    </div>
+    <div class="sponsored-line"><i class="fas fa-info-circle"></i><span>Sponsored · Paid for by Kabo Farmyard Fertilizer Pty Ltd</span></div>
+  </div>
+</div>
+
+<!-- ===== MOBILE ===== -->
+<div class="ad-wrapper">
+  <p class="mobile-label"><i class="fas fa-mobile-alt"></i> Mobile Feed — Ad Preview</p>
+  <div class="mobile-frame">
+    <div class="mobile-screen">
+      <div class="mobile-statusbar"><span>9:41</span><div class="mobile-statusbar-icons"><i class="fas fa-signal"></i><i class="fas fa-wifi"></i><i class="fas fa-battery-full"></i></div></div>
+      <div class="mobile-notch"></div>
+      <div class="m-post">
+        <div class="m-post-header">
+          <div class="m-avatar"><svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><circle cx="100" cy="100" r="97" fill="none" stroke="white" stroke-width="2.5"/><line x1="100" y1="108" x2="100" y2="74" stroke="white" stroke-width="2.8" stroke-linecap="round"/><ellipse cx="85" cy="84" rx="13" ry="6.5" fill="white" transform="rotate(-38 85 84)"/><ellipse cx="115" cy="84" rx="13" ry="6.5" fill="white" transform="rotate(38 115 84)"/></svg></div>
+          <div><div class="m-name">Kabo Organic Fertilizers</div><div class="m-meta"><span class="m-sponsored">Sponsored</span> · 🌱</div></div>
+          <span class="m-more"><i class="fas fa-ellipsis-h"></i></span>
+        </div>
+
+        <div class="m-image">
+          <img src="fertiliser.jpeg" alt="Kabo Organic Fertilizer 50kg bag" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="img-placeholder" style="display:none"><i class="fas fa-image"></i><span>fertiliser.jpeg</span></div>
+          <span class="m-img-badge">Sponsored</span>
+          <span class="m-img-cta">Send Message</span>
+        </div>
+
+        <div class="m-text">
+          <p><span class="hl">SOIL ISN'T DIRT. IT'S ALIVE. AND YOUR CROPS ARE HUNGRY.</span></p>
+
+          <p style="margin-top:6px">Let's talk about something most farmers overlook — soil health.</p>
+
+          <p style="margin-top:4px">Most of us plant, apply chemical fertilizers, harvest, and repeat season after season. Meanwhile the soil is dying. Structure is breaking down. Microbes are gone. Yields are dropping. The land that fed your parents is barely feeding you.</p>
+
+          <p style="margin-top:4px">That's exactly why we made <span class="hl">Kabo Organic Fertilizer</span>.</p>
+
+          <p class="st">What is it?</p>
+          <p>It's a 100% organic, granular fertilizer — not a chemical cocktail. It's made from decomposed organic matter that's been properly composted and laboratory tested. Every single batch.</p>
+
+          <p class="st">What's actually in it?</p>
+          <p>This isn't guesswork. Here's the guaranteed analysis:</p>
+          <div class="analysis">
+            <p>🌿 Organic Matter: 18–20%</p>
+            <p>🌿 Total Nitrogen (N): 0.4%</p>
+            <p>🌿 Available Phosphorus (P): 28–30 ppm</p>
+            <p>🌿 Potassium (K): 4200–4500 ppm</p>
+            <p>🌿 Calcium (Ca): 1700–2300 ppm</p>
+            <p>🌿 Magnesium (Mg): 1700–2200 ppm</p>
+            <p>🌿 pH: 8.9–9.0</p>
+            <p>🌿 Heavy Metals: Within safe agricultural limits</p>
+          </div>
+
+          <p class="st">What does it DO for your soil?</p>
+          <p><span class="check">✅</span> Improves soil fertility — feeds the soil so the soil can feed your crops</p>
+          <p><span class="check">✅</span> Enhances microbial activity — brings back the bacteria and organisms that make soil WORK</p>
+          <p><span class="check">✅</span> Improves soil structure — better water retention, better drainage, less crusting</p>
+          <p><span class="check">✅</span> Helps balance soil pH — so nutrients actually become available to your plants</p>
+          <p><span class="check">✅</span> Safe and environmentally friendly — no chemical runoff into your water, no poisoned soil for the next generation</p>
+
+          <p class="st">What crops can you use it on?</p>
+          <p>Everything.</p>
+          <p>🥬 Vegetables — 200–400g per planting hole</p>
+          <p>🌽 Maize — 1–2 handfuls per planting hole</p>
+          <p>🍎 Fruit Trees — 2–5kg around the tree, twice a year</p>
+          <p>🌱 Seedlings — mix 1 part fertilizer with 3 parts soil</p>
+          <p>🌾 Field Crops — 1–2 tons per hectare</p>
+
+          <p class="st">Best used as:</p>
+          <p><span class="check">✔</span> Basal dressing</p>
+          <p><span class="check">✔</span> Soil conditioner</p>
+          <p><span class="check">✔</span> All-purpose organic fertilizer</p>
+
+          <p class="st">Why this matters right now:</p>
+          <p>Chemical fertilizers give you a quick boost then destroy your soil over time. Organic fertilizer works slower but builds your soil UP. Year after year, your land gets better. Your yields get more consistent. Your soil holds more water during drought. Your crops resist pests better because the soil is actually healthy.</p>
+
+          <p style="margin-top:4px">One 50kg bag covers a significant area depending on your crop and application rate. And because it's slow-release, it keeps feeding your soil for weeks — not days like chemicals.</p>
+
+          <p style="margin-top:4px">This isn't new science. This is how farming worked for generations before chemicals took over. We just made it easier to use.</p>
+
+          <div class="contact">📍 Proudly produced by Kabo Farmyard Fertilizer Pty Ltd<br>📍 Mazenod, Halekhobanyane, Maseru, Lesotho<br>📞 +266 50131461 / 62779665<br>📧 kabofarmyardfertilizer@gmail.com</div>
+          <div class="tagline">Restoring Soil. Growing the Nation.</div>
+          <div class="hashtag">#OrganicFarming #SoilHealth #LesothoFarming #KaboOrganic #SustainableAgriculture #Fertilizer #FarmersFirst #HealthySoilHealthyCrops #OrganicMatter #SoilFertility #GrowOrganic #AgricultureLesotho</div>
+        </div>
+
+        <div class="m-react"><div class="m-react-icons"><span class="r-like">👍</span><span class="r-love">❤️</span><span class="r-care">🥺</span></div><span class="m-react-count">247</span></div>
+        <div class="m-actions">
+          <div class="m-action"><i class="far fa-thumbs-up"></i><span>Like</span></div>
+          <div class="m-action"><i class="far fa-comment"></i><span>Comment</span></div>
+          <div class="m-action"><i class="far fa-share-square"></i><span>Share</span></div>
+        </div>
+        <div class="m-spon-line"><i class="fas fa-info-circle"></i><span>Sponsored · Kabo Farmyard Fertilizer Pty Ltd</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
