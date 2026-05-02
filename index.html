@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="st">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Facebook Ad Preview — Kabo Organic</title>
+<title>Facebook Ad Preview — Kabo Organic (Sesotho + English)</title>
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
@@ -12,6 +12,7 @@
   .ad-wrapper{width:500px;max-width:100%}
   .ad-label{font-size:11px;font-weight:600;color:#65676B;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:6px}
   .ad-label i{color:#1877F2;font-size:13px}
+  .lang-badge{display:inline-block;background:#1A472A;color:white;font-size:9px;font-weight:700;padding:2px 8px;border-radius:10px;letter-spacing:.5px;margin-left:6px}
 
   .fb-post{background:white;border-radius:8px;box-shadow:0 1px 2px rgba(0,0,0,.1);overflow:hidden}
 
@@ -36,11 +37,16 @@
   .post-text p{font-size:15px;color:#050505;line-height:1.5}
   .hl{color:#1A472A;font-weight:700}
   .check{color:#2E7D32}
-  .st{font-weight:700;color:#050505;margin-top:10px;margin-bottom:4px}
+  .st{font-weight:700;color:#050505;margin-top:12px;margin-bottom:4px}
   .analysis{font-size:14px;color:#050505;line-height:1.7;margin-top:4px}
-  .contact{font-size:13px;color:#65676B;margin-top:10px;line-height:1.6}
-  .tagline{font-size:13px;color:#65676B;margin-top:6px;font-style:italic}
-  .hashtag{font-size:13px;color:#1877F2;margin-top:4px}
+  .contact{font-size:13px;color:#65676B;margin-top:12px;line-height:1.7}
+  .tagline{font-size:14px;color:#1A472A;margin-top:8px;font-weight:600}
+  .hashtag{font-size:13px;color:#1877F2;margin-top:6px}
+  .urgency-box{background:linear-gradient(135deg,#FFF8E1,#FFF3CD);border:1.5px solid #F9A825;border-radius:8px;padding:12px 14px;margin-top:12px}
+  .urgency-box p{font-size:14px;color:#E65100;font-weight:600;line-height:1.5}
+  .cta-box{background:#1A472A;color:white;border-radius:8px;padding:14px 16px;margin-top:10px;text-align:center}
+  .cta-box p{color:white;font-size:16px;font-weight:700;line-height:1.5}
+  .cta-box .cta-sub{font-size:13px;font-weight:400;opacity:.9;margin-top:6px;line-height:1.5}
 
   .reactions-bar{padding:8px 16px;border-top:1px solid #E4E6EB;display:flex;align-items:center;justify-content:space-between}
   .reactions-left{display:flex;align-items:center;gap:6px}
@@ -88,11 +94,16 @@
   .m-text p{font-size:13px;color:#E4E6EB;line-height:1.45}
   .m-text .hl{color:#7BC67E;font-weight:700}
   .m-text .check{color:#7BC67E}
-  .m-text .st{font-weight:700;color:#E4E6EB;margin-top:8px;margin-bottom:3px}
+  .m-text .st{font-weight:700;color:#E4E6EB;margin-top:10px;margin-bottom:3px}
   .m-text .analysis{font-size:12px;color:#E4E6EB;line-height:1.6;margin-top:3px}
-  .m-text .contact{font-size:11px;color:#B0B3B8;margin-top:8px;line-height:1.5}
-  .m-text .tagline{font-size:11px;color:#B0B3B8;margin-top:4px;font-style:italic}
-  .m-text .hashtag{font-size:11px;color:#5B9CF6;margin-top:3px}
+  .m-text .contact{font-size:11px;color:#B0B3B8;margin-top:10px;line-height:1.5}
+  .m-text .tagline{font-size:12px;color:#7BC67E;margin-top:6px;font-weight:600}
+  .m-text .hashtag{font-size:11px;color:#5B9CF6;margin-top:4px}
+  .m-text .m-urgency{background:rgba(249,168,37,.15);border:1px solid rgba(249,168,37,.4);border-radius:6px;padding:8px 10px;margin-top:10px}
+  .m-text .m-urgency p{font-size:12px;color:#FFB74D;font-weight:600;line-height:1.4}
+  .m-text .m-cta{background:#1A472A;border-radius:6px;padding:10px 12px;margin-top:8px;text-align:center}
+  .m-text .m-cta p{color:white;font-size:14px;font-weight:700;line-height:1.4}
+  .m-text .m-cta .m-cta-sub{font-size:11px;font-weight:400;opacity:.9;margin-top:4px;line-height:1.4}
 
   .m-react{padding:6px 14px;display:flex;align-items:center;justify-content:space-between}
   .m-react-icons{display:flex;align-items:center;gap:4px}
@@ -112,14 +123,21 @@
   .img-placeholder i{font-size:48px;color:#C8A96E;opacity:.4}
   .img-placeholder span{font-size:13px;color:#8B5E3C;opacity:.6;letter-spacing:1px}
 
+  /* Section divider between Sesotho and English */
+  .lang-divider{width:100%;max-width:1080px;text-align:center;padding:40px 0 20px;position:relative}
+  .lang-divider::before{content:'';position:absolute;left:0;right:0;top:50%;height:1px;background:#CED0D4}
+  .lang-divider span{position:relative;background:#E4E6EB;padding:0 20px;font-size:13px;font-weight:700;color:#65676B;letter-spacing:2px;text-transform:uppercase}
+
   @media(max-width:920px){body{padding:20px 12px}.ad-wrapper{width:100%}}
 </style>
 </head>
 <body>
 
-<!-- ===== DESKTOP ===== -->
+<!-- ============================================================ -->
+<!-- ===== SESOTHO VERSION — DESKTOP ===== -->
+<!-- ============================================================ -->
 <div class="ad-wrapper">
-  <p class="ad-label"><i class="fab fa-facebook"></i> Desktop Feed — Ad Preview</p>
+  <p class="ad-label"><i class="fab fa-facebook"></i> Desktop Feed — Sesotho <span class="lang-badge">SE</span></p>
   <div class="fb-post">
     <div class="post-header">
       <div class="page-avatar">
@@ -133,67 +151,68 @@
     </div>
 
     <div class="ad-image">
-      <img src="fertiliser.jpeg" alt="Kabo Organic Fertilizer 50kg bag" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="img-placeholder" style="display:none"><i class="fas fa-image"></i><span>fertiliser.jpeg</span></div>
+      <img src="fertiliser.png" alt="Kabo Organic Fertilizer 50kg bag" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="img-placeholder" style="display:none"><i class="fas fa-image"></i><span>fertiliser.png</span></div>
       <span class="ad-img-badge">Sponsored</span>
-      <span class="ad-img-cta">Send Message</span>
+      <span class="ad-img-cta">Romela Molaetsa</span>
     </div>
 
     <div class="post-text">
-      <p><span class="hl">SOIL ISN'T DIRT. IT'S ALIVE. AND YOUR CROPS ARE HUNGRY.</span></p>
+      <p><span class="hl">MOBU OA HAO OA SENYEHA. LIJALO TSA HAO LI A FOKOLA. NA UA TSEBA HOBANENG?</span></p>
 
-      <p style="margin-top:8px">Let's talk about something most farmers overlook — soil health.</p>
+      <p style="margin-top:8px">U se u le lilemo u lema — empa selemo le selemo, kotulo ea fokola.<br>Mobu oa thatafala. Lijalo ha li sa hola hantle joalo ka pele.</p>
 
-      <p style="margin-top:6px">Most of us plant, apply chemical fertilizers, harvest, and repeat season after season. Meanwhile the soil is dying. Structure is breaking down. Microbes are gone. Yields are dropping. The land that fed your parents is barely feeding you.</p>
+      <p style="margin-top:8px">'Nete ke ena:<br>manyolo a lik'hemik'hale a fana ka tlhahiso ea nako e khutšoane — empa a senya mobu oa hao ha nako e ntse e ea.</p>
 
-      <p style="margin-top:6px">That's exactly why we made <span class="hl">Kabo Organic Fertilizer</span>.</p>
+      <p style="margin-top:6px">Mobu o lahleheloa ke matla.<br>Dibaktheria tse molemo lia fela.<br>Qetellong — o sala o lema mobu o shoeleng.</p>
 
-      <p class="st">What is it?</p>
-      <p>It's a 100% organic, granular fertilizer — not a chemical cocktail. It's made from decomposed organic matter that's been properly composted and laboratory tested. Every single batch.</p>
+      <p style="margin-top:8px">👉 Ke ka lebaka leo re hlahisitseng:<br><span class="hl">Kabo Organic Fertilizer</span></p>
 
-      <p class="st">What's actually in it?</p>
-      <p>This isn't guesswork. Here's the guaranteed analysis:</p>
+      <p>✔ 100% ea tlhaho<br>✔ E hlahlojoa laboratori<br>✔ E bolokehile bakeng sa mobu, lijalo le tikoloho</p>
+
+      <p class="st">Se ka hare ho eona (Guaranteed Analysis):</p>
       <div class="analysis">
-        <p>🌿 Organic Matter: 18–20%</p>
-        <p>🌿 Total Nitrogen (N): 0.4%</p>
-        <p>🌿 Available Phosphorus (P): 28–30 ppm</p>
+        <p>🌿 Lintho tsa tlhaho: 18–20%</p>
+        <p>🌿 Nitrogen (N): 0.4%</p>
+        <p>🌿 Phosphorus (P): 28–30 ppm</p>
         <p>🌿 Potassium (K): 4200–4500 ppm</p>
         <p>🌿 Calcium (Ca): 1700–2300 ppm</p>
         <p>🌿 Magnesium (Mg): 1700–2200 ppm</p>
         <p>🌿 pH: 8.9–9.0</p>
-        <p>🌿 Heavy Metals: Within safe agricultural limits</p>
       </div>
 
-      <p class="st">What does it DO for your soil?</p>
-      <p><span class="check">✅</span> Improves soil fertility — feeds the soil so the soil can feed your crops</p>
-      <p><span class="check">✅</span> Enhances microbial activity — brings back the bacteria and organisms that make soil WORK</p>
-      <p><span class="check">✅</span> Improves soil structure — better water retention, better drainage, less crusting</p>
-      <p><span class="check">✅</span> Helps balance soil pH — so nutrients actually become available to your plants</p>
-      <p><span class="check">✅</span> Safe and environmentally friendly — no chemical runoff into your water, no poisoned soil for the next generation</p>
+      <p class="st">E thusa joang mobu oa hao?</p>
+      <p><span class="check">✅</span> E matlafatsa mobu hore o fephe lijalo hantle</p>
+      <p><span class="check">✅</span> E khutlisa dibaktheria tse molemo</p>
+      <p><span class="check">✅</span> E ntlafatsa sebopeho sa mobu (metsi a lula hantle, ha o ome kapele)</p>
+      <p><span class="check">✅</span> E lokisa pH hore limatlafatsi li fumanehe</p>
+      <p><span class="check">✅</span> E sireletsa tikoloho — ha e silafatse metsi</p>
 
-      <p class="st">What crops can you use it on?</p>
-      <p>Everything.</p>
-      <p>🥬 Vegetables — 200–400g per planting hole</p>
-      <p>🌽 Maize — 1–2 handfuls per planting hole</p>
-      <p>🍎 Fruit Trees — 2–5kg around the tree, twice a year</p>
-      <p>🌱 Seedlings — mix 1 part fertilizer with 3 parts soil</p>
-      <p>🌾 Field Crops — 1–2 tons per hectare</p>
+      <p class="st">U ka e sebelisa hokae?</p>
+      <p>✔ Meroho — 200–400g ka mokoting</p>
+      <p>✔ Poone — 1–2 matsoho ka mokoting</p>
+      <p>✔ Lifate tsa litholoana — 2–5kg ho potoloha sefate</p>
+      <p>✔ Lipeo — kopanya 1 karolo ea manyolo le 3 tsa mobu</p>
+      <p>✔ Masimo — 1–2 tone ka hekitara</p>
 
-      <p class="st">Best used as:</p>
-      <p><span class="check">✔</span> Basal dressing</p>
-      <p><span class="check">✔</span> Soil conditioner</p>
-      <p><span class="check">✔</span> All-purpose organic fertilizer</p>
+      <p class="st">Hobaneng u lokela ho qala hona joale?</p>
+      <p>Manyolo a lik'hemik'hale a fana ka liphetho kapele — empa a senya bokamoso ba mobu oa hao.</p>
+      <p style="margin-top:4px">Manyolo a tlhaho a haha mobu butle — empa a u fa kotulo e tsitsitseng selemo le selemo.</p>
+      <p style="margin-top:6px">Mobu o betere =<br>✔ Lijalo tse matla<br>✔ Kotulo e ngata<br>✔ Tšireletso nakong ea komello</p>
 
-      <p class="st">Why this matters right now:</p>
-      <p>Chemical fertilizers give you a quick boost then destroy your soil over time. Organic fertilizer works slower but builds your soil UP. Year after year, your land gets better. Your yields get more consistent. Your soil holds more water during drought. Your crops resist pests better because the soil is actually healthy.</p>
+      <div class="urgency-box">
+        <p>⏰ Nako ea ho lema e se e atametse<br>Se emele ho fihlela mobu oa hao o se o fokotsehile haholo.</p>
+      </div>
 
-      <p style="margin-top:6px">One 50kg bag covers a significant area depending on your crop and application rate. And because it's slow-release, it keeps feeding your soil for weeks — not days like chemicals.</p>
+      <div class="cta-box">
+        <p>📩 ROMELA MOLAETSA HONA JOALE:</p>
+        <p>"Ke batla ho reka"</p>
+        <p class="cta-sub">Re tla u araba kapele.<br>Rea romela kapa u ka tla ho rona Mazenod.</p>
+      </div>
 
-      <p style="margin-top:6px">This isn't new science. This is how farming worked for generations before chemicals took over. We just made it easier to use.</p>
-
-      <div class="contact">📍 Proudly produced by Kabo Farmyard Fertilizer Pty Ltd<br>📍 Mazenod, Halekhobanyane, Maseru, Lesotho<br>📞 +266 50131461 / 62779665<br>📧 kabofarmyardfertilizer@gmail.com</div>
-      <div class="tagline">Restoring Soil. Growing the Nation.</div>
-      <div class="hashtag">#OrganicFarming #SoilHealth #LesothoFarming #KaboOrganic #SustainableAgriculture #Fertilizer #FarmersFirst #HealthySoilHealthyCrops #OrganicMatter #SoilFertility #GrowOrganic #AgricultureLesotho</div>
+      <div class="contact">📍 Kabo Farmyard Fertilizer Pty Ltd<br>📍 Mazenod, Maseru, Lesotho<br>📞 +266 50131461 / 62779665</div>
+      <div class="tagline">Ho tsosolosa mobu. Ho matlafatsa balemi.</div>
+      <div class="hashtag">#BolumiBaTlhaho #BopheloBaMobu #KaboOrganic #BalimiPele #MobuOPhetse #Tlhaho #TemoYaLesotho #KotuloEIngata</div>
     </div>
 
     <div class="reactions-bar">
@@ -209,9 +228,9 @@
   </div>
 </div>
 
-<!-- ===== MOBILE ===== -->
+<!-- ===== SESOTHO — MOBILE ===== -->
 <div class="ad-wrapper">
-  <p class="mobile-label"><i class="fas fa-mobile-alt"></i> Mobile Feed — Ad Preview</p>
+  <p class="mobile-label"><i class="fas fa-mobile-alt"></i> Mobile Feed — Sesotho <span class="lang-badge">SE</span></p>
   <div class="mobile-frame">
     <div class="mobile-screen">
       <div class="mobile-statusbar"><span>9:41</span><div class="mobile-statusbar-icons"><i class="fas fa-signal"></i><i class="fas fa-wifi"></i><i class="fas fa-battery-full"></i></div></div>
@@ -224,67 +243,259 @@
         </div>
 
         <div class="m-image">
-          <img src="fertiliser.jpeg" alt="Kabo Organic Fertilizer 50kg bag" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="img-placeholder" style="display:none"><i class="fas fa-image"></i><span>fertiliser.jpeg</span></div>
+          <img src="fertiliser.png" alt="Kabo Organic Fertilizer 50kg bag" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="img-placeholder" style="display:none"><i class="fas fa-image"></i><span>fertiliser.png</span></div>
+          <span class="m-img-badge">Sponsored</span>
+          <span class="m-img-cta">Romela Molaetsa</span>
+        </div>
+
+        <div class="m-text">
+          <p><span class="hl">MOBU OA HAO OA SENYEHA. LIJALO TSA HAO LI A FOKOLA. NA UA TSEBA HOBANENG?</span></p>
+
+          <p style="margin-top:6px">U se u le lilemo u lema — empa selemo le selemo, kotulo ea fokola.<br>Mobu oa thatafala. Lijalo ha li sa hola hantle joalo ka pele.</p>
+
+          <p style="margin-top:4px">'Nete ke ena:<br>manyolo a lik'hemik'hale a fana ka tlhahiso ea nako e khutšoane — empa a senya mobu oa hao ha nako e ntse e ea.</p>
+
+          <p style="margin-top:4px">Mobu o lahleheloa ke matla.<br>Dibaktheria tse molemo lia fela.<br>Qetellong — o sala o lema mobu o shoeleng.</p>
+
+          <p style="margin-top:6px">👉 Ke ka lebaka leo re hlahisitseng:<br><span class="hl">Kabo Organic Fertilizer</span></p>
+
+          <p>✔ 100% ea tlhaho<br>✔ E hlahlojoa laboratori<br>✔ E bolokehile bakeng sa mobu, lijalo le tikoloho</p>
+
+          <p class="st">Se ka hare ho eona:</p>
+          <div class="analysis">
+            <p>🌿 Lintho tsa tlhaho: 18–20%</p>
+            <p>🌿 Nitrogen (N): 0.4%</p>
+            <p>🌿 Phosphorus (P): 28–30 ppm</p>
+            <p>🌿 Potassium (K): 4200–4500 ppm</p>
+            <p>🌿 Calcium (Ca): 1700–2300 ppm</p>
+            <p>🌿 Magnesium (Mg): 1700–2200 ppm</p>
+            <p>🌿 pH: 8.9–9.0</p>
+          </div>
+
+          <p class="st">E thusa joang mobu oa hao?</p>
+          <p><span class="check">✅</span> E matlafatsa mobu hore o fephe lijalo hantle</p>
+          <p><span class="check">✅</span> E khutlisa dibaktheria tse molemo</p>
+          <p><span class="check">✅</span> E ntlafatsa sebopeho sa mobu (metsi a lula hantle)</p>
+          <p><span class="check">✅</span> E lokisa pH hore limatlafatsi li fumanehe</p>
+          <p><span class="check">✅</span> E sireletsa tikoloho — ha e silafatse metsi</p>
+
+          <p class="st">U ka e sebelisa hokae?</p>
+          <p>✔ Meroho — 200–400g ka mokoting</p>
+          <p>✔ Poone — 1–2 matsoho ka mokoting</p>
+          <p>✔ Lifate — 2–5kg ho potoloha sefate</p>
+          <p>✔ Lipeo — 1 manyolo : 3 mobu</p>
+          <p>✔ Masimo — 1–2 tone/ha</p>
+
+          <p class="st">Hobaneng u lokela ho qala hona joale?</p>
+          <p>Manyolo a lik'hemik'hale a fana ka liphetho kapele — empa a senya bokamoso ba mobu.</p>
+          <p style="margin-top:3px">Manyolo a tlhaho a haha mobu butle — empa a u fa kotulo e tsitsitseng selemo le selemo.</p>
+          <p style="margin-top:4px">Mobu o betere =<br>✔ Lijalo tse matla<br>✔ Kotulo e ngata<br>✔ Tšireletso nakong ea komello</p>
+
+          <div class="m-urgency">
+            <p>⏰ Nako ea ho lema e se e atametse! Se emele ho fihlela mobu oa hao o fokotsehile haholo.</p>
+          </div>
+
+          <div class="m-cta">
+            <p>📩 ROMELA MOLAETSA HONA JOALE:</p>
+            <p>"Ke batla ho reka"</p>
+            <p class="m-cta-sub">Re tla u araba kapele. Rea romela kapa u tla Mazenod.</p>
+          </div>
+
+          <div class="contact">📍 Kabo Farmyard Fertilizer Pty Ltd<br>📍 Mazenod, Maseru<br>📞 +266 50131461 / 62779665</div>
+          <div class="tagline">Ho tsosolosa mobu. Ho matlafatsa balemi.</div>
+          <div class="hashtag">#BolumiBaTlhaho #BopheloBaMobu #KaboOrganic #BalimiPele #MobuOPhetse #Tlhaho #TemoYaLesotho</div>
+        </div>
+
+        <div class="m-react"><div class="m-react-icons"><span class="r-like">👍</span><span class="r-love">❤️</span><span class="r-care">🥺</span></div><span class="m-react-count">247</span></div>
+        <div class="m-actions">
+          <div class="m-action"><i class="far fa-thumbs-up"></i><span>Like</span></div>
+          <div class="m-action"><i class="far fa-comment"></i><span>Comment</span></div>
+          <div class="m-action"><i class="far fa-share-square"></i><span>Share</span></div>
+        </div>
+        <div class="m-spon-line"><i class="fas fa-info-circle"></i><span>Sponsored · Kabo Farmyard Fertilizer Pty Ltd</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- ===== LANGUAGE DIVIDER ===== -->
+<!-- ============================================================ -->
+<div class="lang-divider"><span>Sesotho ▲ &nbsp;|&nbsp; English ▼</span></div>
+
+<!-- ============================================================ -->
+<!-- ===== ENGLISH VERSION — DESKTOP ===== -->
+<!-- ============================================================ -->
+<div class="ad-wrapper">
+  <p class="ad-label"><i class="fab fa-facebook"></i> Desktop Feed — English <span class="lang-badge" style="background:#1877F2">EN</span></p>
+  <div class="fb-post">
+    <div class="post-header">
+      <div class="page-avatar">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><circle cx="100" cy="100" r="97" fill="none" stroke="white" stroke-width="2.5"/><line x1="100" y1="108" x2="100" y2="74" stroke="white" stroke-width="2.8" stroke-linecap="round"/><ellipse cx="85" cy="84" rx="13" ry="6.5" fill="white" transform="rotate(-38 85 84)"/><ellipse cx="115" cy="84" rx="13" ry="6.5" fill="white" transform="rotate(38 115 84)"/></svg>
+      </div>
+      <div class="page-info">
+        <div class="page-name">Kabo Organic Fertilizers</div>
+        <div class="page-meta"><span class="sponsored">Sponsored</span> · <span>🌱</span></div>
+      </div>
+      <div class="more-btn"><i class="fas fa-ellipsis-h"></i></div>
+    </div>
+
+    <div class="ad-image">
+      <img src="fertiliser.png" alt="Kabo Organic Fertilizer 50kg bag" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="img-placeholder" style="display:none"><i class="fas fa-image"></i><span>fertiliser.png</span></div>
+      <span class="ad-img-badge">Sponsored</span>
+      <span class="ad-img-cta">Send Message</span>
+    </div>
+
+    <div class="post-text">
+      <p><span class="hl">YOUR SOIL IS LOSING LIFE. YOUR YIELDS ARE DROPPING. DO YOU KNOW WHY?</span></p>
+
+      <p style="margin-top:8px">You've been planting for years —<br>but every season, your harvest gets smaller.</p>
+      <p style="margin-top:4px">Your soil is harder.<br>Your crops are weaker.</p>
+
+      <p style="margin-top:8px">Here's the truth:<br>chemical fertilizers give fast results — but destroy your soil over time.</p>
+      <p style="margin-top:4px">The soil loses nutrients.<br>Beneficial microbes disappear.<br>And eventually — you're farming dead soil.</p>
+
+      <p style="margin-top:8px">👉 That's why we created:<br><span class="hl">Kabo Organic Fertilizer</span></p>
+
+      <p>✔ 100% organic<br>✔ Laboratory tested<br>✔ Safe for soil, crops, and the environment</p>
+
+      <p class="st">What's inside (Guaranteed Analysis):</p>
+      <div class="analysis">
+        <p>🌿 Organic Matter: 18–20%</p>
+        <p>🌿 Nitrogen (N): 0.4%</p>
+        <p>🌿 Phosphorus (P): 28–30 ppm</p>
+        <p>🌿 Potassium (K): 4200–4500 ppm</p>
+        <p>🌿 Calcium (Ca): 1700–2300 ppm</p>
+        <p>🌿 Magnesium (Mg): 1700–2200 ppm</p>
+        <p>🌿 pH: 8.9–9.0</p>
+      </div>
+
+      <p class="st">What it does for your soil:</p>
+      <p><span class="check">✅</span> Restores soil fertility</p>
+      <p><span class="check">✅</span> Brings back beneficial microbes</p>
+      <p><span class="check">✅</span> Improves soil structure (better water retention & aeration)</p>
+      <p><span class="check">✅</span> Balances soil pH</p>
+      <p><span class="check">✅</span> Protects your environment — no harmful runoff</p>
+
+      <p class="st">Where can you use it?</p>
+      <p>✔ Vegetables — 200–400g per planting hole</p>
+      <p>✔ Maize — 1–2 handfuls per hole</p>
+      <p>✔ Fruit trees — 2–5kg around each tree</p>
+      <p>✔ Seedlings — mix 1:3 with soil</p>
+      <p>✔ Field crops — 1–2 tons per hectare</p>
+
+      <p class="st">Why this matters NOW</p>
+      <p>Chemical fertilizers give quick gains —<br>but destroy long-term productivity.</p>
+      <p style="margin-top:4px">Organic fertilizer builds your soil — and your profits — year after year.</p>
+      <p style="margin-top:6px">Better soil means:<br>✔ Stronger crops<br>✔ Higher yields<br>✔ Better drought resistance</p>
+
+      <div class="urgency-box">
+        <p>⏰ Planting season is coming<br>Don't wait until your crops struggle.</p>
+      </div>
+
+      <div class="cta-box">
+        <p>📩 SEND A MESSAGE NOW:</p>
+        <p>"I want to buy"</p>
+        <p class="cta-sub">Fast response. Delivery available.<br>Or visit us in Mazenod.</p>
+      </div>
+
+      <div class="contact">📍 Kabo Farmyard Fertilizer Pty Ltd<br>📍 Maseru, Lesotho<br>📞 +266 50131461 / 62779665</div>
+      <div class="tagline">Restore your soil. Grow your future.</div>
+      <div class="hashtag">#OrganicFarming #SoilHealth #KaboOrganic #FarmersFirst #HealthySoilHealthyCrops #GrowOrganic #AgricultureLesotho #SoilFertility #SustainableAgriculture #OrganicMatter</div>
+    </div>
+
+    <div class="reactions-bar">
+      <div class="reactions-left"><div class="reaction-icons"><span class="r-like">👍</span><span class="r-love">❤️</span><span class="r-care">🥺</span></div><span class="reaction-count">247</span></div>
+      <span class="reactions-right">38 comments</span>
+    </div>
+    <div class="action-btns">
+      <div class="action-btn"><i class="far fa-thumbs-up"></i><span>Like</span></div>
+      <div class="action-btn"><i class="far fa-comment"></i><span>Comment</span></div>
+      <div class="action-btn"><i class="far fa-share-square"></i><span>Share</span></div>
+    </div>
+    <div class="sponsored-line"><i class="fas fa-info-circle"></i><span>Sponsored · Paid for by Kabo Farmyard Fertilizer Pty Ltd</span></div>
+  </div>
+</div>
+
+<!-- ===== ENGLISH — MOBILE ===== -->
+<div class="ad-wrapper">
+  <p class="mobile-label"><i class="fas fa-mobile-alt"></i> Mobile Feed — English <span class="lang-badge" style="background:#1877F2">EN</span></p>
+  <div class="mobile-frame">
+    <div class="mobile-screen">
+      <div class="mobile-statusbar"><span>9:41</span><div class="mobile-statusbar-icons"><i class="fas fa-signal"></i><i class="fas fa-wifi"></i><i class="fas fa-battery-full"></i></div></div>
+      <div class="mobile-notch"></div>
+      <div class="m-post">
+        <div class="m-post-header">
+          <div class="m-avatar"><svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><circle cx="100" cy="100" r="97" fill="none" stroke="white" stroke-width="2.5"/><line x1="100" y1="108" x2="100" y2="74" stroke="white" stroke-width="2.8" stroke-linecap="round"/><ellipse cx="85" cy="84" rx="13" ry="6.5" fill="white" transform="rotate(-38 85 84)"/><ellipse cx="115" cy="84" rx="13" ry="6.5" fill="white" transform="rotate(38 115 84)"/></svg></div>
+          <div><div class="m-name">Kabo Organic Fertilizers</div><div class="m-meta"><span class="m-sponsored">Sponsored</span> · 🌱</div></div>
+          <span class="m-more"><i class="fas fa-ellipsis-h"></i></span>
+        </div>
+
+        <div class="m-image">
+          <img src="fertiliser.png" alt="Kabo Organic Fertilizer 50kg bag" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="img-placeholder" style="display:none"><i class="fas fa-image"></i><span>fertiliser.png</span></div>
           <span class="m-img-badge">Sponsored</span>
           <span class="m-img-cta">Send Message</span>
         </div>
 
         <div class="m-text">
-          <p><span class="hl">SOIL ISN'T DIRT. IT'S ALIVE. AND YOUR CROPS ARE HUNGRY.</span></p>
+          <p><span class="hl">YOUR SOIL IS LOSING LIFE. YOUR YIELDS ARE DROPPING. DO YOU KNOW WHY?</span></p>
 
-          <p style="margin-top:6px">Let's talk about something most farmers overlook — soil health.</p>
+          <p style="margin-top:6px">You've been planting for years —<br>but every season, your harvest gets smaller.</p>
+          <p style="margin-top:3px">Your soil is harder.<br>Your crops are weaker.</p>
 
-          <p style="margin-top:4px">Most of us plant, apply chemical fertilizers, harvest, and repeat season after season. Meanwhile the soil is dying. Structure is breaking down. Microbes are gone. Yields are dropping. The land that fed your parents is barely feeding you.</p>
+          <p style="margin-top:6px">Here's the truth:<br>chemical fertilizers give fast results — but destroy your soil over time.</p>
+          <p style="margin-top:3px">The soil loses nutrients.<br>Beneficial microbes disappear.<br>And eventually — you're farming dead soil.</p>
 
-          <p style="margin-top:4px">That's exactly why we made <span class="hl">Kabo Organic Fertilizer</span>.</p>
+          <p style="margin-top:6px">👉 That's why we created:<br><span class="hl">Kabo Organic Fertilizer</span></p>
 
-          <p class="st">What is it?</p>
-          <p>It's a 100% organic, granular fertilizer — not a chemical cocktail. It's made from decomposed organic matter that's been properly composted and laboratory tested. Every single batch.</p>
+          <p>✔ 100% organic<br>✔ Laboratory tested<br>✔ Safe for soil, crops, and the environment</p>
 
-          <p class="st">What's actually in it?</p>
-          <p>This isn't guesswork. Here's the guaranteed analysis:</p>
+          <p class="st">What's inside:</p>
           <div class="analysis">
             <p>🌿 Organic Matter: 18–20%</p>
-            <p>🌿 Total Nitrogen (N): 0.4%</p>
-            <p>🌿 Available Phosphorus (P): 28–30 ppm</p>
+            <p>🌿 Nitrogen (N): 0.4%</p>
+            <p>🌿 Phosphorus (P): 28–30 ppm</p>
             <p>🌿 Potassium (K): 4200–4500 ppm</p>
             <p>🌿 Calcium (Ca): 1700–2300 ppm</p>
             <p>🌿 Magnesium (Mg): 1700–2200 ppm</p>
             <p>🌿 pH: 8.9–9.0</p>
-            <p>🌿 Heavy Metals: Within safe agricultural limits</p>
           </div>
 
-          <p class="st">What does it DO for your soil?</p>
-          <p><span class="check">✅</span> Improves soil fertility — feeds the soil so the soil can feed your crops</p>
-          <p><span class="check">✅</span> Enhances microbial activity — brings back the bacteria and organisms that make soil WORK</p>
-          <p><span class="check">✅</span> Improves soil structure — better water retention, better drainage, less crusting</p>
-          <p><span class="check">✅</span> Helps balance soil pH — so nutrients actually become available to your plants</p>
-          <p><span class="check">✅</span> Safe and environmentally friendly — no chemical runoff into your water, no poisoned soil for the next generation</p>
+          <p class="st">What it does for your soil:</p>
+          <p><span class="check">✅</span> Restores soil fertility</p>
+          <p><span class="check">✅</span> Brings back beneficial microbes</p>
+          <p><span class="check">✅</span> Improves soil structure (better water retention & aeration)</p>
+          <p><span class="check">✅</span> Balances soil pH</p>
+          <p><span class="check">✅</span> Protects your environment — no harmful runoff</p>
 
-          <p class="st">What crops can you use it on?</p>
-          <p>Everything.</p>
-          <p>🥬 Vegetables — 200–400g per planting hole</p>
-          <p>🌽 Maize — 1–2 handfuls per planting hole</p>
-          <p>🍎 Fruit Trees — 2–5kg around the tree, twice a year</p>
-          <p>🌱 Seedlings — mix 1 part fertilizer with 3 parts soil</p>
-          <p>🌾 Field Crops — 1–2 tons per hectare</p>
+          <p class="st">Where can you use it?</p>
+          <p>✔ Vegetables — 200–400g per hole</p>
+          <p>✔ Maize — 1–2 handfuls per hole</p>
+          <p>✔ Fruit trees — 2–5kg around each tree</p>
+          <p>✔ Seedlings — mix 1:3 with soil</p>
+          <p>✔ Field crops — 1–2 tons/ha</p>
 
-          <p class="st">Best used as:</p>
-          <p><span class="check">✔</span> Basal dressing</p>
-          <p><span class="check">✔</span> Soil conditioner</p>
-          <p><span class="check">✔</span> All-purpose organic fertilizer</p>
+          <p class="st">Why this matters NOW</p>
+          <p>Chemical fertilizers give quick gains —<br>but destroy long-term productivity.</p>
+          <p style="margin-top:3px">Organic fertilizer builds your soil — and your profits — year after year.</p>
+          <p style="margin-top:4px">Better soil means:<br>✔ Stronger crops<br>✔ Higher yields<br>✔ Better drought resistance</p>
 
-          <p class="st">Why this matters right now:</p>
-          <p>Chemical fertilizers give you a quick boost then destroy your soil over time. Organic fertilizer works slower but builds your soil UP. Year after year, your land gets better. Your yields get more consistent. Your soil holds more water during drought. Your crops resist pests better because the soil is actually healthy.</p>
+          <div class="m-urgency">
+            <p>⏰ Planting season is coming! Don't wait until your crops struggle.</p>
+          </div>
 
-          <p style="margin-top:4px">One 50kg bag covers a significant area depending on your crop and application rate. And because it's slow-release, it keeps feeding your soil for weeks — not days like chemicals.</p>
+          <div class="m-cta">
+            <p>📩 SEND A MESSAGE NOW:</p>
+            <p>"I want to buy"</p>
+            <p class="m-cta-sub">Fast response. Delivery available. Or visit us in Mazenod.</p>
+          </div>
 
-          <p style="margin-top:4px">This isn't new science. This is how farming worked for generations before chemicals took over. We just made it easier to use.</p>
-
-          <div class="contact">📍 Proudly produced by Kabo Farmyard Fertilizer Pty Ltd<br>📍 Mazenod, Halekhobanyane, Maseru, Lesotho<br>📞 +266 50131461 / 62779665<br>📧 kabofarmyardfertilizer@gmail.com</div>
-          <div class="tagline">Restoring Soil. Growing the Nation.</div>
-          <div class="hashtag">#OrganicFarming #SoilHealth #LesothoFarming #KaboOrganic #SustainableAgriculture #Fertilizer #FarmersFirst #HealthySoilHealthyCrops #OrganicMatter #SoilFertility #GrowOrganic #AgricultureLesotho</div>
+          <div class="contact">📍 Kabo Farmyard Fertilizer Pty Ltd<br>📍 Maseru, Lesotho<br>📞 +266 50131461 / 62779665</div>
+          <div class="tagline">Restore your soil. Grow your future.</div>
+          <div class="hashtag">#OrganicFarming #SoilHealth #KaboOrganic #FarmersFirst #HealthySoilHealthyCrops #GrowOrganic #AgricultureLesotho</div>
         </div>
 
         <div class="m-react"><div class="m-react-icons"><span class="r-like">👍</span><span class="r-love">❤️</span><span class="r-care">🥺</span></div><span class="m-react-count">247</span></div>
