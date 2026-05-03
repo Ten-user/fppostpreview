@@ -3,512 +3,396 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Facebook Ad Preview — Kabo Organic (Sesotho + English)</title>
-<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<title>Kabo Organic — Educative Post Preview</title>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
-  body{font-family:'Jost',sans-serif;background:#E4E6EB;min-height:100vh;display:flex;align-items:flex-start;justify-content:center;padding:40px 20px;gap:32px;flex-wrap:wrap}
+  body{font-family:'Jost',sans-serif;background:#E4E6EB;min-height:100vh;display:flex;align-items:flex-start;justify-content:center;padding:40px 20px;gap:28px;flex-wrap:wrap}
 
-  .ad-wrapper{width:500px;max-width:100%}
-  .ad-label{font-size:11px;font-weight:600;color:#65676B;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:6px}
-  .ad-label i{color:#1877F2;font-size:13px}
-  .lang-badge{display:inline-block;background:#1A472A;color:white;font-size:9px;font-weight:700;padding:2px 8px;border-radius:10px;letter-spacing:.5px;margin-left:6px}
+  .wrap{width:520px;max-width:100%}
+  .wrap-label{font-size:11px;font-weight:700;color:#65676B;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+  .wrap-label i{color:#1877F2}
 
-  .fb-post{background:white;border-radius:8px;box-shadow:0 1px 2px rgba(0,0,0,.1);overflow:hidden}
+  /* ── CARD ── */
+  .card{background:white;border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,.12);overflow:hidden}
 
-  .post-header{padding:12px 16px;display:flex;align-items:center;gap:10px}
-  .page-avatar{width:40px;height:40px;border-radius:50%;background:#1A472A;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-  .page-avatar svg{width:24px;height:24px}
-  .page-info{flex:1}
-  .page-name{font-size:15px;font-weight:700;color:#050505}
-  .page-meta{font-size:12px;color:#65676B;display:flex;align-items:center;gap:4px}
-  .sponsored{color:#1877F2;font-weight:600;cursor:pointer}
-  .sponsored:hover{text-decoration:underline}
-  .more-btn{width:32px;height:32px;border-radius:50%;background:#E4E6EB;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0}
-  .more-btn i{color:#050505;font-size:12px}
+  .c-header{padding:12px 16px;display:flex;align-items:center;gap:10px}
+  .c-avatar{width:40px;height:40px;border-radius:50%;background:#1A472A;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .c-avatar svg{width:24px;height:24px}
+  .c-name{font-size:15px;font-weight:700;color:#050505}
+  .c-meta{font-size:12px;color:#65676B}
+  .c-spon{color:#1877F2;font-weight:600}
+  .c-more{width:32px;height:32px;border-radius:50%;background:#E4E6EB;display:flex;align-items:center;justify-content:center;margin-left:auto;cursor:pointer;color:#050505;font-size:12px}
 
-  .ad-image{width:100%;aspect-ratio:1.91/1;position:relative;overflow:hidden}
-  .ad-image img{width:100%;height:100%;object-fit:cover;display:block}
-  .ad-img-badge{position:absolute;top:12px;left:12px;background:rgba(0,0,0,.5);color:white;font-size:9px;font-weight:600;padding:3px 8px;border-radius:3px;letter-spacing:.5px;backdrop-filter:blur(4px);z-index:10}
-  .ad-img-cta{position:absolute;bottom:12px;right:12px;background:#1877F2;color:white;font-size:10px;font-weight:700;padding:6px 16px;border-radius:6px;cursor:pointer;letter-spacing:.5px;z-index:10;transition:background .15s}
-  .ad-img-cta:hover{background:#1565C0}
+  /* image */
+  .c-img{width:100%;aspect-ratio:1.91/1;position:relative;overflow:hidden}
+  .c-img img{width:100%;height:100%;object-fit:cover;display:block}
+  .img-fallback{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:24px;text-align:center;background:linear-gradient(135deg,#0a2e14 0%,#1A472A 60%,#2d6a4f 100%)}
+  .img-fallback i{font-size:54px;color:#A8D5B5;opacity:.3}
+  .img-fallback-title{font-size:22px;font-weight:900;color:white;line-height:1.2;text-transform:uppercase;letter-spacing:-.3px}
+  .img-fallback-title span{color:#A8D5B5}
+  .img-fallback-sub{font-size:12px;color:rgba(255,255,255,.55);margin-top:4px}
+  .img-badge{position:absolute;top:12px;left:12px;background:rgba(0,0,0,.5);color:white;font-size:9px;font-weight:600;padding:3px 8px;border-radius:3px;letter-spacing:.5px;backdrop-filter:blur(4px)}
+  .img-wa{position:absolute;bottom:12px;right:12px;background:#25D366;color:white;font-size:10px;font-weight:700;padding:7px 14px;border-radius:6px;display:flex;align-items:center;gap:5px;text-decoration:none;z-index:5}
 
-  .post-text{padding:12px 16px}
-  .post-text p{font-size:15px;color:#050505;line-height:1.5}
-  .hl{color:#1A472A;font-weight:700}
+  /* ── BODY ── */
+  .c-body{padding:14px 16px;font-size:15px;color:#050505;line-height:1.65}
+  .c-body p{margin-bottom:6px}
+
+  /* bilingual divider */
+  .lang-block{padding:10px 0}
+  .lang-tag{display:inline-flex;align-items:center;gap:6px;background:#1A472A;color:white;font-size:10px;font-weight:800;padding:3px 10px;border-radius:12px;letter-spacing:1px;margin-bottom:10px}
+  .lang-tag.en-tag{background:#1877F2}
+
+  .lang-sep{display:flex;align-items:center;gap:10px;margin:16px 0}
+  .lang-sep-line{flex:1;height:1px;background:#E4E6EB}
+  .lang-sep-label{font-size:11px;font-weight:700;color:#65676B;letter-spacing:1.5px;text-transform:uppercase;white-space:nowrap}
+
+  /* section headings inside post */
+  .s-head{background:#1A472A;color:white;font-size:13px;font-weight:800;padding:7px 12px;border-radius:6px;margin:12px 0 6px;display:flex;align-items:center;gap:7px}
+  .s-head.gold{background:linear-gradient(90deg,#E65100,#F57F17)}
+
+  /* highlight */
+  .hl{color:#1A472A;font-weight:800}
   .check{color:#2E7D32}
-  .st{font-weight:700;color:#050505;margin-top:12px;margin-bottom:4px}
-  .analysis{font-size:14px;color:#050505;line-height:1.7;margin-top:4px}
-  .contact{font-size:13px;color:#65676B;margin-top:12px;line-height:1.7}
-  .tagline{font-size:14px;color:#1A472A;margin-top:8px;font-weight:600}
-  .hashtag{font-size:13px;color:#1877F2;margin-top:6px}
-  .urgency-box{background:linear-gradient(135deg,#FFF8E1,#FFF3CD);border:1.5px solid #F9A825;border-radius:8px;padding:12px 14px;margin-top:12px}
-  .urgency-box p{font-size:14px;color:#E65100;font-weight:600;line-height:1.5}
-  .cta-box{background:#1A472A;color:white;border-radius:8px;padding:14px 16px;margin-top:10px;text-align:center}
-  .cta-box p{color:white;font-size:16px;font-weight:700;line-height:1.5}
-  .cta-box .cta-sub{font-size:13px;font-weight:400;opacity:.9;margin-top:6px;line-height:1.5}
 
+  /* fact rows */
+  .fact-row{display:flex;flex-direction:column;gap:3px;margin:4px 0 8px}
+  .fact{font-size:14px;color:#050505;line-height:1.5;padding-left:4px}
+
+  /* comparison table */
+  .comp-table{width:100%;border-collapse:collapse;margin:8px 0 12px;font-size:13px}
+  .comp-table th{background:#1A472A;color:white;padding:7px 10px;text-align:left;font-weight:700}
+  .comp-table th:last-child{text-align:center}
+  .comp-table td{padding:6px 10px;border-bottom:1px solid #E4E6EB;vertical-align:top;line-height:1.4}
+  .comp-table td:last-child{text-align:center;font-weight:700}
+  .comp-table tr:nth-child(even) td{background:#F7FAF8}
+  .bad{color:#C62828}
+  .good{color:#2E7D32}
+
+  /* analysis box */
+  .analysis-box{background:#F0F7F2;border:1.5px solid #A5D6A7;border-radius:8px;padding:10px 14px;margin:8px 0;font-size:13px;line-height:1.8;color:#1A472A}
+  .analysis-box strong{font-weight:700}
+
+  /* testimonial */
+  .testi{background:#FFF8E1;border-left:4px solid #F9A825;border-radius:0 8px 8px 0;padding:10px 14px;margin:10px 0}
+  .testi-text{font-size:14px;color:#050505;font-style:italic;line-height:1.5}
+  .testi-author{font-size:12px;color:#65676B;margin-top:5px;font-weight:600}
+  .stars{color:#F9A825;font-size:12px;margin-bottom:3px}
+
+  /* price box */
+  .price-box{background:linear-gradient(135deg,#1A472A,#2d6a4f);border-radius:10px;padding:14px 16px;margin:10px 0;display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .p-label{font-size:10px;color:rgba(255,255,255,.7);text-transform:uppercase;letter-spacing:.5px}
+  .p-main{font-size:30px;font-weight:900;color:white;line-height:1}
+  .p-sub{font-size:12px;color:rgba(255,255,255,.65);margin-top:3px}
+  .p-right{text-align:right}
+  .p-vs-label{font-size:9px;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.5px}
+  .p-vs{font-size:14px;color:#FFD54F;text-decoration:line-through;font-weight:700}
+  .p-save{background:#E65100;color:white;font-size:11px;font-weight:800;padding:3px 8px;border-radius:4px;margin-top:4px;display:inline-block}
+
+  /* urgency */
+  .urgency{background:linear-gradient(135deg,#FFF3CD,#FFE082);border:2px solid #F9A825;border-radius:8px;padding:12px 14px;margin:10px 0;display:flex;gap:10px;align-items:flex-start}
+  .urgency i{font-size:18px;color:#E65100;flex-shrink:0;margin-top:2px}
+  .urgency p{font-size:14px;color:#BF360C;font-weight:700;line-height:1.45}
+  .urgency p span{font-weight:400;color:#5D4037;display:block;font-size:13px;margin-top:3px}
+
+  /* WA CTA */
+  .wa-cta{display:block;background:#25D366;border-radius:10px;padding:14px 16px;margin:10px 0;text-align:center;text-decoration:none;cursor:pointer}
+  .wa-cta p{color:white;font-size:17px;font-weight:800;line-height:1.35}
+  .wa-cta .wa-sub{font-size:12px;font-weight:500;opacity:.9;margin-top:5px}
+  .wa-cta i{font-size:18px;vertical-align:middle;margin-right:6px}
+
+  .contact{font-size:13px;color:#65676B;margin-top:10px;line-height:1.8}
+  .tagline{font-size:14px;color:#1A472A;margin-top:6px;font-weight:700}
+  .hashtag{font-size:12px;color:#1877F2;margin-top:5px;line-height:1.7}
+
+  /* FB chrome */
   .reactions-bar{padding:8px 16px;border-top:1px solid #E4E6EB;display:flex;align-items:center;justify-content:space-between}
-  .reactions-left{display:flex;align-items:center;gap:6px}
   .reaction-icons{display:flex}
   .reaction-icons span{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;margin-right:-4px;border:2px solid white}
   .r-like{background:#1877F2}.r-love{background:#E4263C}.r-care{background:#F7B924}
-  .reaction-count{font-size:15px;color:#65676B}
-  .reactions-right{font-size:15px;color:#65676B;cursor:pointer}
-  .reactions-right:hover{text-decoration:underline}
+  .r-count{font-size:15px;color:#65676B;margin-left:6px}
+  .r-right{font-size:15px;color:#65676B}
   .action-btns{padding:4px 8px;border-top:1px solid #E4E6EB;display:flex}
-  .action-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:8px 0;cursor:pointer;border-radius:6px;transition:background .15s}
+  .action-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:8px 0;cursor:pointer;border-radius:6px}
   .action-btn:hover{background:#F2F2F2}
   .action-btn i{font-size:18px;color:#65676B}
   .action-btn span{font-size:15px;font-weight:600;color:#65676B}
-  .sponsored-line{padding:8px 16px 12px;display:flex;align-items:center;gap:6px}
-  .sponsored-line i{font-size:10px;color:#65676B}
-  .sponsored-line span{font-size:11px;color:#65676B}
+  .spon-line{padding:8px 16px 12px;display:flex;align-items:center;gap:6px}
+  .spon-line i{font-size:10px;color:#65676B}
+  .spon-line span{font-size:11px;color:#65676B}
 
-  /* ===== MOBILE ===== */
-  .mobile-label{font-size:11px;font-weight:600;color:#65676B;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:6px}
-  .mobile-label i{color:#1877F2;font-size:13px}
-  .mobile-frame{width:375px;max-width:100%;background:#1C1E21;border-radius:36px;padding:12px;box-shadow:0 8px 40px rgba(0,0,0,.3)}
-  .mobile-screen{background:white;border-radius:26px;overflow:hidden}
-  .mobile-statusbar{background:#1C1E21;padding:8px 20px 4px;display:flex;justify-content:space-between;align-items:center}
-  .mobile-statusbar span{font-size:12px;color:white;font-weight:600}
-  .mobile-statusbar-icons{display:flex;gap:5px;align-items:center}
-  .mobile-statusbar-icons i{font-size:11px;color:white}
-  .mobile-notch{width:120px;height:28px;background:#1C1E21;border-radius:0 0 18px 18px;margin:0 auto;position:relative;top:-1px}
-
-  .m-post{padding:0}
-  .m-post-header{padding:10px 14px;display:flex;align-items:center;gap:8px}
-  .m-avatar{width:32px;height:32px;border-radius:50%;background:#1A472A;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-  .m-avatar svg{width:18px;height:18px}
-  .m-name{font-size:13px;font-weight:700;color:#E4E6EB}
-  .m-meta{font-size:11px;color:#B0B3B8}
-  .m-sponsored{color:#5B9CF6;font-weight:600}
-  .m-more{margin-left:auto;color:#B0B3B8;font-size:16px;cursor:pointer}
-
-  .m-image{width:100%;aspect-ratio:1/1;position:relative;overflow:hidden}
-  .m-image img{width:100%;height:100%;object-fit:cover;display:block}
-  .m-img-badge{position:absolute;top:8px;left:8px;background:rgba(0,0,0,.5);color:white;font-size:7px;font-weight:600;padding:2px 6px;border-radius:2px;letter-spacing:.3px;backdrop-filter:blur(4px);z-index:10}
-  .m-img-cta{position:absolute;bottom:8px;right:8px;background:#1877F2;color:white;font-size:8px;font-weight:700;padding:4px 12px;border-radius:4px;z-index:10}
-
-  .m-text{padding:10px 14px}
-  .m-text p{font-size:13px;color:#E4E6EB;line-height:1.45}
-  .m-text .hl{color:#7BC67E;font-weight:700}
-  .m-text .check{color:#7BC67E}
-  .m-text .st{font-weight:700;color:#E4E6EB;margin-top:10px;margin-bottom:3px}
-  .m-text .analysis{font-size:12px;color:#E4E6EB;line-height:1.6;margin-top:3px}
-  .m-text .contact{font-size:11px;color:#B0B3B8;margin-top:10px;line-height:1.5}
-  .m-text .tagline{font-size:12px;color:#7BC67E;margin-top:6px;font-weight:600}
-  .m-text .hashtag{font-size:11px;color:#5B9CF6;margin-top:4px}
-  .m-text .m-urgency{background:rgba(249,168,37,.15);border:1px solid rgba(249,168,37,.4);border-radius:6px;padding:8px 10px;margin-top:10px}
-  .m-text .m-urgency p{font-size:12px;color:#FFB74D;font-weight:600;line-height:1.4}
-  .m-text .m-cta{background:#1A472A;border-radius:6px;padding:10px 12px;margin-top:8px;text-align:center}
-  .m-text .m-cta p{color:white;font-size:14px;font-weight:700;line-height:1.4}
-  .m-text .m-cta .m-cta-sub{font-size:11px;font-weight:400;opacity:.9;margin-top:4px;line-height:1.4}
-
-  .m-react{padding:6px 14px;display:flex;align-items:center;justify-content:space-between}
-  .m-react-icons{display:flex;align-items:center;gap:4px}
-  .m-react-icons span{width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;margin-right:-3px;border:1.5px solid #1C1E21}
-  .m-react-count{font-size:12px;color:#B0B3B8}
-  .m-actions{padding:2px 6px 4px;border-top:1px solid #3E4042;display:flex}
-  .m-action{flex:1;display:flex;align-items:center;justify-content:center;gap:4px;padding:7px 0;cursor:pointer;border-radius:6px}
-  .m-action:hover{background:#3E4042}
-  .m-action i{font-size:16px;color:#B0B3B8}
-  .m-action span{font-size:12px;font-weight:600;color:#B0B3B8}
-  .m-spon-line{padding:4px 14px 8px;display:flex;align-items:center;gap:4px}
-  .m-spon-line i{font-size:8px;color:#B0B3B8}
-  .m-spon-line span{font-size:9px;color:#B0B3B8}
-
-  /* Placeholder if image missing */
-  .img-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,#F5F0E6,#DDD5C4);gap:12px}
-  .img-placeholder i{font-size:48px;color:#C8A96E;opacity:.4}
-  .img-placeholder span{font-size:13px;color:#8B5E3C;opacity:.6;letter-spacing:1px}
-
-  /* Section divider between Sesotho and English */
-  .lang-divider{width:100%;max-width:1080px;text-align:center;padding:40px 0 20px;position:relative}
-  .lang-divider::before{content:'';position:absolute;left:0;right:0;top:50%;height:1px;background:#CED0D4}
-  .lang-divider span{position:relative;background:#E4E6EB;padding:0 20px;font-size:13px;font-weight:700;color:#65676B;letter-spacing:2px;text-transform:uppercase}
-
-  @media(max-width:920px){body{padding:20px 12px}.ad-wrapper{width:100%}}
+  @media(max-width:560px){body{padding:16px 10px}.wrap{width:100%}}
 </style>
 </head>
 <body>
 
-<!-- ============================================================ -->
-<!-- ===== SESOTHO VERSION — DESKTOP ===== -->
-<!-- ============================================================ -->
-<div class="ad-wrapper">
-  <p class="ad-label"><i class="fab fa-facebook"></i> Desktop Feed — Sesotho <span class="lang-badge">SE</span></p>
-  <div class="fb-post">
-    <div class="post-header">
-      <div class="page-avatar">
+<div class="wrap">
+  <p class="wrap-label"><i class="fab fa-facebook"></i> Desktop / Mobile Feed Preview — Educative Post</p>
+  <div class="card">
+
+    <!-- HEADER -->
+    <div class="c-header">
+      <div class="c-avatar">
         <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><circle cx="100" cy="100" r="97" fill="none" stroke="white" stroke-width="2.5"/><line x1="100" y1="108" x2="100" y2="74" stroke="white" stroke-width="2.8" stroke-linecap="round"/><ellipse cx="85" cy="84" rx="13" ry="6.5" fill="white" transform="rotate(-38 85 84)"/><ellipse cx="115" cy="84" rx="13" ry="6.5" fill="white" transform="rotate(38 115 84)"/></svg>
       </div>
-      <div class="page-info">
-        <div class="page-name">Kabo Organic Fertilizers</div>
-        <div class="page-meta"><span class="sponsored">Sponsored</span> · <span>🌱</span></div>
+      <div style="flex:1">
+        <div class="c-name">Kabo Organic Fertilizers</div>
+        <div class="c-meta"><span class="c-spon">Sponsored</span> · 🌱</div>
       </div>
-      <div class="more-btn"><i class="fas fa-ellipsis-h"></i></div>
+      <div class="c-more"><i class="fas fa-ellipsis-h"></i></div>
     </div>
 
-    <div class="ad-image">
-      <img src="fertiliser.jpeg" alt="Kabo Organic Fertilizer 50kg bag" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="img-placeholder" style="display:none"><i class="fas fa-image"></i><span>fertiliser.jpeg</span></div>
-      <span class="ad-img-badge">Sponsored</span>
-      <span class="ad-img-cta">Romela Molaetsa</span>
+    <!-- IMAGE -->
+    <div class="c-img">
+      <img src="fertiliser.png" alt="Kabo Organic Fertilizer 50kg" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="img-fallback">
+        <i class="fas fa-seedling"></i>
+        <div class="img-fallback-title">Mobu O Phelang.<br><span>A Living Soil.</span></div>
+        <div class="img-fallback-sub">📦 Place your product image here (fertiliser.png)</div>
+      </div>
+      <span class="img-badge">Sponsored</span>
+      <a class="img-wa" href="https://wa.me/26650131461?text=Lumela%2C%20ke%20batla%20ho%20reka%20Kabo%20Organic%20Fertilizer" target="_blank">
+        <i class="fab fa-whatsapp"></i> Reka / Order
+      </a>
     </div>
 
-    <div class="post-text">
-      <p><span class="hl">MOBU OA HAO OA SENYEHA. LIJALO TSA HAO LI A FOKOLA. NA UA TSEBA HOBANENG?</span></p>
+    <!-- BODY -->
+    <div class="c-body">
 
-      <p style="margin-top:8px">U se u le lilemo u lema — empa selemo le selemo, kotulo ea fokola.<br>Mobu oa thatafala. Lijalo ha li sa hola hantle joalo ka pele.</p>
+      <!-- ══════════════════════════════════ -->
+      <!--         SESOTHO BLOCK              -->
+      <!-- ══════════════════════════════════ -->
+      <div class="lang-block">
+        <div class="lang-tag">🇱🇸 SESOTHO</div>
 
-      <p style="margin-top:8px">'Nete ke ena:<br>manyolo a lik'hemik'hale a fana ka tlhahiso ea nako e khutšoane — empa a senya mobu oa hao ha nako e ntse e ea.</p>
+        <p>U phela joang, ntate / 'me? 🙏</p>
+        <p style="margin-top:4px">Re batla ho buisana le uena ka ntho e bohlokoa haholo — <span class="hl">mobu oa hao.</span></p>
 
-      <p style="margin-top:6px">Mobu o lahleheloa ke matla.<br>Dibaktheria tse molemo lia fela.<br>Qetellong — o sala o lema mobu o shoeleng.</p>
+        <div class="s-head">🌱 MOBU OA HAO O BUA NTHATA E. NA U A UTLOA?</div>
 
-      <p style="margin-top:8px">👉 Ke ka lebaka leo re hlahisitseng:<br><span class="hl">Kabo Organic Fertilizer</span></p>
+        <p>Selemo le selemo u lema — empa kotulo ea fokola. Mobu oa thatafala. Lijalo ha li sa matla joalo ka pele. Batho ba bangata ba nahana ke lefu la tlhaho — <strong>ha se joalo.</strong></p>
+        <p style="margin-top:6px">Ena ke 'nete e bohloko: <span class="hl">manyolo a lik'hemik'hale a bolaea mobu oa hao butle butle.</span></p>
 
-      <p>✔ 100% ea tlhaho<br>✔ E hlahlojoa laboratori<br>✔ E bolokehile bakeng sa mobu, lijalo le tikoloho</p>
+        <div class="s-head">❓ MANYOLO A LIK'HEMIK'HALE A ETSA JOANG?</div>
 
-      <p class="st">Se ka hare ho eona (Guaranteed Analysis):</p>
-      <div class="analysis">
-        <p>🌿 Lintho tsa tlhaho: 18–20%</p>
-        <p>🌿 Nitrogen (N): 0.4%</p>
-        <p>🌿 Phosphorus (P): 28–30 ppm</p>
-        <p>🌿 Potassium (K): 4200–4500 ppm</p>
-        <p>🌿 Calcium (Ca): 1700–2300 ppm</p>
-        <p>🌿 Magnesium (Mg): 1700–2200 ppm</p>
-        <p>🌿 pH: 8.9–9.0</p>
+        <table class="comp-table">
+          <tr><th>Se etsahalang</th><th>Liphetho</th></tr>
+          <tr><td>A bolaea dibaktheria tse molemo</td><td class="bad">❌ Mobu o shoa</td></tr>
+          <tr><td>A thatafatsa mobu ha nako e ntse e ea</td><td class="bad">❌ Metsi ha a lule</td></tr>
+          <tr><td>A silafatsa metsi a tlase ho mobu</td><td class="bad">❌ Tikoloho e senyeha</td></tr>
+          <tr><td>A fana ka tlhahiso ea kapele</td><td class="good">✅ Feela ka nako e khutšoane</td></tr>
+        </table>
+
+        <p style="margin-bottom:8px">Ha nako e ntse e ea, mobu o a ba le bokoa. U lema ho feta — empa u fumana ho fokola. Ha ho bohlokoa ho sebelisa manyolo a mangata ho mobu o shoeleng.</p>
+
+        <div class="s-head">🌿 KABO ORGANIC FERTILIZER E ETSA PHAPANG JOANG?</div>
+
+        <p style="margin-bottom:6px">Manyolo a rona ha a fane ka tlhahiso feela — <span class="hl">a phekola mobu oa hao ho tloha teng.</span></p>
+
+        <div class="fact-row">
+          <div class="fact"><span class="check">✅</span> <strong>E khutlisa dibaktheria tse molemo</strong> — tseo e leng mobu o phelang</div>
+          <div class="fact"><span class="check">✅</span> <strong>E ntlafatsa sebopeho sa mobu</strong> — metsi a lula hantle, mobu ha o ome kapele</div>
+          <div class="fact"><span class="check">✅</span> <strong>E lokisa pH ea mobu</strong> — hore limatlafatsi li fumanehe ke lijalo</div>
+          <div class="fact"><span class="check">✅</span> <strong>E matlafatsa lijalo</strong> — ho tloha le lipeo ho fihlela kotulong</div>
+          <div class="fact"><span class="check">✅</span> <strong>E sireletsa tikoloho</strong> — ha e silafatse metsi le mobu oa baahi</div>
+        </div>
+
+        <div class="s-head">🔬 SE KA HARE HO KABO ORGANIC (Liphetho tsa Laboratori)</div>
+
+        <div class="analysis-box">
+          🌿 <strong>Lintho tsa tlhaho:</strong> 18–20%<br>
+          🌿 <strong>Nitrogen (N):</strong> 0.4%<br>
+          🌿 <strong>Phosphorus (P):</strong> 28–30 ppm<br>
+          🌿 <strong>Potassium (K):</strong> 4,200–4,500 ppm<br>
+          🌿 <strong>Calcium (Ca):</strong> 1,700–2,300 ppm<br>
+          🌿 <strong>Magnesium (Mg):</strong> 1,700–2,200 ppm<br>
+          🌿 <strong>pH:</strong> 8.9–9.0
+        </div>
+        <p style="font-size:13px;color:#65676B;margin-bottom:8px">Liphetho tsena li tšoauoa ke laboratori — ha se mantsoe a rona feela.</p>
+
+        <div class="s-head">🚜 U E SEBELISA HOKAE?</div>
+
+        <div class="fact-row">
+          <div class="fact">🥬 <strong>Meroho</strong> — 200–400g ka mokoting oa ho jala</div>
+          <div class="fact">🌽 <strong>Poone</strong> — 1–2 matsoho ka mokoting</div>
+          <div class="fact">🍎 <strong>Lifate tsa litholoana</strong> — 2–5kg ho potoloha sefate se seng le se seng</div>
+          <div class="fact">🌱 <strong>Lipeo</strong> — kopanya 1 karolo ea manyolo le 3 tsa mobu</div>
+          <div class="fact">🌾 <strong>Masimo a maholo</strong> — 1–2 tone ka hekitara</div>
+        </div>
+
+        <div class="testi">
+          <div class="stars">★★★★★</div>
+          <div class="testi-text">"Ke fetoha ho tsoa ho lik'hemik'hale selemo se fetileng. Poone ea ka e ne e sheba hantle haholo — kotulo ea nyoloha. Ha nke ke boele morao."</div>
+          <div class="testi-author">— Rethabile M., molemi, Maseru District</div>
+        </div>
+
+        <div class="s-head gold">💰 THEKO — 50KG BAG</div>
+
+        <div class="price-box">
+          <div>
+            <div class="p-label">Kabo Organic · 50kg</div>
+            <div class="p-main">M 350</div>
+            <div class="p-sub">Re romela · Kapa tla Mazenod</div>
+          </div>
+          <div class="p-right">
+            <div class="p-vs-label">Lik'hemik'hale</div>
+            <div class="p-vs">M 580+</div>
+            <div class="p-save">BOLOKA M230+</div>
+          </div>
+        </div>
+
+        <div class="urgency">
+          <i class="fas fa-clock"></i>
+          <p>Li-bag tse <strong>120 feela</strong> tse saletseng selemong sena.
+          <span>Nako ea ho lema e se e atametse. Reka kajeno u se ke oa emela.</span></p>
+        </div>
+
+        <a class="wa-cta" href="https://wa.me/26650131461?text=Lumela%2C%20ke%20batla%20ho%20reka%20Kabo%20Organic%20Fertilizer%20(50kg)" target="_blank">
+          <p><i class="fab fa-whatsapp"></i> ROMELA MOLAETSA HONA JOALE</p>
+          <p class="wa-sub">Ngola: "Ke batla ho reka" — re tla u araba kapele 🌱</p>
+        </a>
+
+      </div><!-- end sesotho block -->
+
+      <!-- ══════════════════════════════════ -->
+      <!--  LANGUAGE SEPARATOR               -->
+      <!-- ══════════════════════════════════ -->
+      <div class="lang-sep">
+        <div class="lang-sep-line"></div>
+        <div class="lang-sep-label">🇬🇧 English below</div>
+        <div class="lang-sep-line"></div>
       </div>
 
-      <p class="st">E thusa joang mobu oa hao?</p>
-      <p><span class="check">✅</span> E matlafatsa mobu hore o fephe lijalo hantle</p>
-      <p><span class="check">✅</span> E khutlisa dibaktheria tse molemo</p>
-      <p><span class="check">✅</span> E ntlafatsa sebopeho sa mobu (metsi a lula hantle, ha o ome kapele)</p>
-      <p><span class="check">✅</span> E lokisa pH hore limatlafatsi li fumanehe</p>
-      <p><span class="check">✅</span> E sireletsa tikoloho — ha e silafatse metsi</p>
+      <!-- ══════════════════════════════════ -->
+      <!--         ENGLISH BLOCK             -->
+      <!-- ══════════════════════════════════ -->
+      <div class="lang-block">
+        <div class="lang-tag en-tag" style="background:#1877F2">🇬🇧 ENGLISH</div>
 
-      <p class="st">U ka e sebelisa hokae?</p>
-      <p>✔ Meroho — 200–400g ka mokoting</p>
-      <p>✔ Poone — 1–2 matsoho ka mokoting</p>
-      <p>✔ Lifate tsa litholoana — 2–5kg ho potoloha sefate</p>
-      <p>✔ Lipeo — kopanya 1 karolo ea manyolo le 3 tsa mobu</p>
-      <p>✔ Masimo — 1–2 tone ka hekitara</p>
+        <p>How are you, sir / ma'am? 🙏</p>
+        <p style="margin-top:4px">We'd like to have an honest conversation with you about something critical — <span class="hl">your soil.</span></p>
 
-      <p class="st">Hobaneng u lokela ho qala hona joale?</p>
-      <p>Manyolo a lik'hemik'hale a fana ka liphetho kapele — empa a senya bokamoso ba mobu oa hao.</p>
-      <p style="margin-top:4px">Manyolo a tlhaho a haha mobu butle — empa a u fa kotulo e tsitsitseng selemo le selemo.</p>
-      <p style="margin-top:6px">Mobu o betere =<br>✔ Lijalo tse matla<br>✔ Kotulo e ngata<br>✔ Tšireletso nakong ea komello</p>
+        <div class="s-head">🌱 YOUR SOIL IS TRYING TO TELL YOU SOMETHING. ARE YOU LISTENING?</div>
 
-      <div class="urgency-box">
-        <p>⏰ Nako ea ho lema e se e atametse<br>Se emele ho fihlela mobu oa hao o se o fokotsehile haholo.</p>
+        <p>Season after season you plant — but every harvest gets smaller. Your soil gets harder. Your crops get weaker. Most farmers think it's the weather or bad luck. <strong>It's not.</strong></p>
+        <p style="margin-top:6px">Here is the uncomfortable truth: <span class="hl">chemical fertilizers are slowly killing your soil.</span></p>
+
+        <div class="s-head">❓ WHAT CHEMICAL FERTILIZERS ACTUALLY DO TO YOUR SOIL</div>
+
+        <table class="comp-table">
+          <tr><th>What happens</th><th>Result</th></tr>
+          <tr><td>They kill beneficial soil microbes</td><td class="bad">❌ Soil dies over time</td></tr>
+          <tr><td>They harden soil structure over time</td><td class="bad">❌ Water can't penetrate</td></tr>
+          <tr><td>They leach into groundwater</td><td class="bad">❌ Environmental damage</td></tr>
+          <tr><td>They give fast results</td><td class="good">✅ But only short-term</td></tr>
+        </table>
+
+        <p style="margin-bottom:8px">Over time, your soil becomes dependent and depleted. You use more fertilizer, spend more money — and get less yield. Pouring more chemicals into dead soil doesn't work.</p>
+
+        <div class="s-head">🌿 WHAT KABO ORGANIC ACTUALLY DOES</div>
+
+        <p style="margin-bottom:6px">Our fertilizer doesn't just feed your crops — <span class="hl">it heals and rebuilds your soil from the inside.</span></p>
+
+        <div class="fact-row">
+          <div class="fact"><span class="check">✅</span> <strong>Restores beneficial microbes</strong> — the living organisms that make soil productive</div>
+          <div class="fact"><span class="check">✅</span> <strong>Improves soil structure</strong> — better water retention, less drought stress</div>
+          <div class="fact"><span class="check">✅</span> <strong>Balances soil pH</strong> — so nutrients are actually absorbed by your crops</div>
+          <div class="fact"><span class="check">✅</span> <strong>Strengthens crops</strong> — from germination all the way to harvest</div>
+          <div class="fact"><span class="check">✅</span> <strong>Protects the environment</strong> — zero harmful runoff into water sources</div>
+        </div>
+
+        <div class="s-head">🔬 WHAT'S INSIDE (Laboratory Guaranteed Analysis)</div>
+
+        <div class="analysis-box">
+          🌿 <strong>Organic Matter:</strong> 18–20%<br>
+          🌿 <strong>Nitrogen (N):</strong> 0.4%<br>
+          🌿 <strong>Phosphorus (P):</strong> 28–30 ppm<br>
+          🌿 <strong>Potassium (K):</strong> 4,200–4,500 ppm<br>
+          🌿 <strong>Calcium (Ca):</strong> 1,700–2,300 ppm<br>
+          🌿 <strong>Magnesium (Mg):</strong> 1,700–2,200 ppm<br>
+          🌿 <strong>pH:</strong> 8.9–9.0
+        </div>
+        <p style="font-size:13px;color:#65676B;margin-bottom:8px">These results are independently verified by laboratory testing — not just our word for it.</p>
+
+        <div class="s-head">🚜 HOW TO USE IT</div>
+
+        <div class="fact-row">
+          <div class="fact">🥬 <strong>Vegetables</strong> — 200–400g per planting hole</div>
+          <div class="fact">🌽 <strong>Maize</strong> — 1–2 handfuls per hole</div>
+          <div class="fact">🍎 <strong>Fruit trees</strong> — 2–5kg spread around each tree</div>
+          <div class="fact">🌱 <strong>Seedlings</strong> — mix 1 part fertilizer to 3 parts soil</div>
+          <div class="fact">🌾 <strong>Field crops</strong> — 1–2 tonnes per hectare</div>
+        </div>
+
+        <div class="testi">
+          <div class="stars">★★★★★</div>
+          <div class="testi-text">"I switched from chemical fertilizer last season. My maize was visibly healthier and my yield went up noticeably. I will not be going back."</div>
+          <div class="testi-author">— Rethabile M., subsistence farmer, Maseru District</div>
+        </div>
+
+        <div class="s-head gold">💰 PRICING — 50KG BAG</div>
+
+        <div class="price-box">
+          <div>
+            <div class="p-label">Kabo Organic · 50kg</div>
+            <div class="p-main">M 350</div>
+            <div class="p-sub">Delivery available · Collect in Mazenod</div>
+          </div>
+          <div class="p-right">
+            <div class="p-vs-label">vs chemical</div>
+            <div class="p-vs">M 580+</div>
+            <div class="p-save">SAVE M230+</div>
+          </div>
+        </div>
+
+        <div class="urgency">
+          <i class="fas fa-clock"></i>
+          <p>Only <strong>120 bags remaining</strong> this season.
+          <span>Planting season is approaching fast. Order now before stock runs out.</span></p>
+        </div>
+
+        <a class="wa-cta" href="https://wa.me/26650131461?text=Hi%2C%20I%20want%20to%20buy%20Kabo%20Organic%20Fertilizer%20(50kg)" target="_blank">
+          <p><i class="fab fa-whatsapp"></i> SEND A MESSAGE NOW</p>
+          <p class="wa-sub">Type: "I want to buy" — we respond fast 🌱</p>
+        </a>
+
+      </div><!-- end english block -->
+
+      <!-- SHARED FOOTER -->
+      <div class="contact">
+        📍 Kabo Farmyard Fertilizer Pty Ltd<br>
+        📍 Mazenod, Maseru, Lesotho<br>
+        📞 +266 50131461 / 62779665
+      </div>
+      <div class="tagline">Ho tsosolosa mobu. Ho matlafatsa balemi.<br>Restore your soil. Grow your future.</div>
+      <div class="hashtag">
+        #BolumiBaTlhaho #BopheloBaMobu #KaboOrganic #BalimiPele #TemoYaLesotho<br>
+        #OrganicFarming #SoilHealth #FarmersFirst #AgricultureLesotho #SustainableAgriculture
       </div>
 
-      <div class="cta-box">
-        <p>📩 ROMELA MOLAETSA HONA JOALE:</p>
-        <p>"Ke batla ho reka"</p>
-        <p class="cta-sub">Re tla u araba kapele.<br>Rea romela kapa u ka tla ho rona Mazenod.</p>
-      </div>
+    </div><!-- end c-body -->
 
-      <div class="contact">📍 Kabo Farmyard Fertilizer Pty Ltd<br>📍 Mazenod, Maseru, Lesotho<br>📞 +266 50131461 / 62779665</div>
-      <div class="tagline">Ho tsosolosa mobu. Ho matlafatsa balemi.</div>
-      <div class="hashtag">#BolumiBaTlhaho #BopheloBaMobu #KaboOrganic #BalimiPele #MobuOPhetse #Tlhaho #TemoYaLesotho #KotuloEIngata</div>
-    </div>
-
+    <!-- FB CHROME -->
     <div class="reactions-bar">
-      <div class="reactions-left"><div class="reaction-icons"><span class="r-like">👍</span><span class="r-love">❤️</span><span class="r-care">🥺</span></div><span class="reaction-count">247</span></div>
-      <span class="reactions-right">38 comments</span>
+      <div style="display:flex;align-items:center;gap:6px">
+        <div class="reaction-icons">
+          <span class="r-like">👍</span><span class="r-love">❤️</span><span class="r-care">🥺</span>
+        </div>
+        <span class="r-count">247</span>
+      </div>
+      <span class="r-right">38 comments</span>
     </div>
     <div class="action-btns">
       <div class="action-btn"><i class="far fa-thumbs-up"></i><span>Like</span></div>
       <div class="action-btn"><i class="far fa-comment"></i><span>Comment</span></div>
       <div class="action-btn"><i class="far fa-share-square"></i><span>Share</span></div>
     </div>
-    <div class="sponsored-line"><i class="fas fa-info-circle"></i><span>Sponsored · Paid for by Kabo Farmyard Fertilizer Pty Ltd</span></div>
-  </div>
-</div>
+    <div class="spon-line"><i class="fas fa-info-circle"></i><span>Sponsored · Paid for by Kabo Farmyard Fertilizer Pty Ltd</span></div>
 
-<!-- ===== SESOTHO — MOBILE ===== -->
-<div class="ad-wrapper">
-  <p class="mobile-label"><i class="fas fa-mobile-alt"></i> Mobile Feed — Sesotho <span class="lang-badge">SE</span></p>
-  <div class="mobile-frame">
-    <div class="mobile-screen">
-      <div class="mobile-statusbar"><span>9:41</span><div class="mobile-statusbar-icons"><i class="fas fa-signal"></i><i class="fas fa-wifi"></i><i class="fas fa-battery-full"></i></div></div>
-      <div class="mobile-notch"></div>
-      <div class="m-post">
-        <div class="m-post-header">
-          <div class="m-avatar"><svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><circle cx="100" cy="100" r="97" fill="none" stroke="white" stroke-width="2.5"/><line x1="100" y1="108" x2="100" y2="74" stroke="white" stroke-width="2.8" stroke-linecap="round"/><ellipse cx="85" cy="84" rx="13" ry="6.5" fill="white" transform="rotate(-38 85 84)"/><ellipse cx="115" cy="84" rx="13" ry="6.5" fill="white" transform="rotate(38 115 84)"/></svg></div>
-          <div><div class="m-name">Kabo Organic Fertilizers</div><div class="m-meta"><span class="m-sponsored">Sponsored</span> · 🌱</div></div>
-          <span class="m-more"><i class="fas fa-ellipsis-h"></i></span>
-        </div>
-
-        <div class="m-image">
-          <img src="fertiliser.jpeg" alt="Kabo Organic Fertilizer 50kg bag" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="img-placeholder" style="display:none"><i class="fas fa-image"></i><span>fertiliser.jpeg</span></div>
-          <span class="m-img-badge">Sponsored</span>
-          <span class="m-img-cta">Romela Molaetsa</span>
-        </div>
-
-        <div class="m-text">
-          <p><span class="hl">MOBU OA HAO OA SENYEHA. LIJALO TSA HAO LI A FOKOLA. NA UA TSEBA HOBANENG?</span></p>
-
-          <p style="margin-top:6px">U se u le lilemo u lema — empa selemo le selemo, kotulo ea fokola.<br>Mobu oa thatafala. Lijalo ha li sa hola hantle joalo ka pele.</p>
-
-          <p style="margin-top:4px">'Nete ke ena:<br>manyolo a lik'hemik'hale a fana ka tlhahiso ea nako e khutšoane — empa a senya mobu oa hao ha nako e ntse e ea.</p>
-
-          <p style="margin-top:4px">Mobu o lahleheloa ke matla.<br>Dibaktheria tse molemo lia fela.<br>Qetellong — o sala o lema mobu o shoeleng.</p>
-
-          <p style="margin-top:6px">👉 Ke ka lebaka leo re hlahisitseng:<br><span class="hl">Kabo Organic Fertilizer</span></p>
-
-          <p>✔ 100% ea tlhaho<br>✔ E hlahlojoa laboratori<br>✔ E bolokehile bakeng sa mobu, lijalo le tikoloho</p>
-
-          <p class="st">Se ka hare ho eona:</p>
-          <div class="analysis">
-            <p>🌿 Lintho tsa tlhaho: 18–20%</p>
-            <p>🌿 Nitrogen (N): 0.4%</p>
-            <p>🌿 Phosphorus (P): 28–30 ppm</p>
-            <p>🌿 Potassium (K): 4200–4500 ppm</p>
-            <p>🌿 Calcium (Ca): 1700–2300 ppm</p>
-            <p>🌿 Magnesium (Mg): 1700–2200 ppm</p>
-            <p>🌿 pH: 8.9–9.0</p>
-          </div>
-
-          <p class="st">E thusa joang mobu oa hao?</p>
-          <p><span class="check">✅</span> E matlafatsa mobu hore o fephe lijalo hantle</p>
-          <p><span class="check">✅</span> E khutlisa dibaktheria tse molemo</p>
-          <p><span class="check">✅</span> E ntlafatsa sebopeho sa mobu (metsi a lula hantle)</p>
-          <p><span class="check">✅</span> E lokisa pH hore limatlafatsi li fumanehe</p>
-          <p><span class="check">✅</span> E sireletsa tikoloho — ha e silafatse metsi</p>
-
-          <p class="st">U ka e sebelisa hokae?</p>
-          <p>✔ Meroho — 200–400g ka mokoting</p>
-          <p>✔ Poone — 1–2 matsoho ka mokoting</p>
-          <p>✔ Lifate — 2–5kg ho potoloha sefate</p>
-          <p>✔ Lipeo — 1 manyolo : 3 mobu</p>
-          <p>✔ Masimo — 1–2 tone/ha</p>
-
-          <p class="st">Hobaneng u lokela ho qala hona joale?</p>
-          <p>Manyolo a lik'hemik'hale a fana ka liphetho kapele — empa a senya bokamoso ba mobu.</p>
-          <p style="margin-top:3px">Manyolo a tlhaho a haha mobu butle — empa a u fa kotulo e tsitsitseng selemo le selemo.</p>
-          <p style="margin-top:4px">Mobu o betere =<br>✔ Lijalo tse matla<br>✔ Kotulo e ngata<br>✔ Tšireletso nakong ea komello</p>
-
-          <div class="m-urgency">
-            <p>⏰ Nako ea ho lema e se e atametse! Se emele ho fihlela mobu oa hao o fokotsehile haholo.</p>
-          </div>
-
-          <div class="m-cta">
-            <p>📩 ROMELA MOLAETSA HONA JOALE:</p>
-            <p>"Ke batla ho reka"</p>
-            <p class="m-cta-sub">Re tla u araba kapele. Rea romela kapa u tla Mazenod.</p>
-          </div>
-
-          <div class="contact">📍 Kabo Farmyard Fertilizer Pty Ltd<br>📍 Mazenod, Maseru<br>📞 +266 50131461 / 62779665</div>
-          <div class="tagline">Ho tsosolosa mobu. Ho matlafatsa balemi.</div>
-          <div class="hashtag">#BolumiBaTlhaho #BopheloBaMobu #KaboOrganic #BalimiPele #MobuOPhetse #Tlhaho #TemoYaLesotho</div>
-        </div>
-
-        <div class="m-react"><div class="m-react-icons"><span class="r-like">👍</span><span class="r-love">❤️</span><span class="r-care">🥺</span></div><span class="m-react-count">247</span></div>
-        <div class="m-actions">
-          <div class="m-action"><i class="far fa-thumbs-up"></i><span>Like</span></div>
-          <div class="m-action"><i class="far fa-comment"></i><span>Comment</span></div>
-          <div class="m-action"><i class="far fa-share-square"></i><span>Share</span></div>
-        </div>
-        <div class="m-spon-line"><i class="fas fa-info-circle"></i><span>Sponsored · Kabo Farmyard Fertilizer Pty Ltd</span></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ============================================================ -->
-<!-- ===== LANGUAGE DIVIDER ===== -->
-<!-- ============================================================ -->
-<div class="lang-divider"><span>Sesotho ▲ &nbsp;|&nbsp; English ▼</span></div>
-
-<!-- ============================================================ -->
-<!-- ===== ENGLISH VERSION — DESKTOP ===== -->
-<!-- ============================================================ -->
-<div class="ad-wrapper">
-  <p class="ad-label"><i class="fab fa-facebook"></i> Desktop Feed — English <span class="lang-badge" style="background:#1877F2">EN</span></p>
-  <div class="fb-post">
-    <div class="post-header">
-      <div class="page-avatar">
-        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><circle cx="100" cy="100" r="97" fill="none" stroke="white" stroke-width="2.5"/><line x1="100" y1="108" x2="100" y2="74" stroke="white" stroke-width="2.8" stroke-linecap="round"/><ellipse cx="85" cy="84" rx="13" ry="6.5" fill="white" transform="rotate(-38 85 84)"/><ellipse cx="115" cy="84" rx="13" ry="6.5" fill="white" transform="rotate(38 115 84)"/></svg>
-      </div>
-      <div class="page-info">
-        <div class="page-name">Kabo Organic Fertilizers</div>
-        <div class="page-meta"><span class="sponsored">Sponsored</span> · <span>🌱</span></div>
-      </div>
-      <div class="more-btn"><i class="fas fa-ellipsis-h"></i></div>
-    </div>
-
-    <div class="ad-image">
-      <img src="fertiliser.jpeg" alt="Kabo Organic Fertilizer 50kg bag" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="img-placeholder" style="display:none"><i class="fas fa-image"></i><span>fertiliser.jpeg</span></div>
-      <span class="ad-img-badge">Sponsored</span>
-      <span class="ad-img-cta">Send Message</span>
-    </div>
-
-    <div class="post-text">
-      <p><span class="hl">YOUR SOIL IS LOSING LIFE. YOUR YIELDS ARE DROPPING. DO YOU KNOW WHY?</span></p>
-
-      <p style="margin-top:8px">You've been planting for years —<br>but every season, your harvest gets smaller.</p>
-      <p style="margin-top:4px">Your soil is harder.<br>Your crops are weaker.</p>
-
-      <p style="margin-top:8px">Here's the truth:<br>chemical fertilizers give fast results — but destroy your soil over time.</p>
-      <p style="margin-top:4px">The soil loses nutrients.<br>Beneficial microbes disappear.<br>And eventually — you're farming dead soil.</p>
-
-      <p style="margin-top:8px">👉 That's why we created:<br><span class="hl">Kabo Organic Fertilizer</span></p>
-
-      <p>✔ 100% organic<br>✔ Laboratory tested<br>✔ Safe for soil, crops, and the environment</p>
-
-      <p class="st">What's inside (Guaranteed Analysis):</p>
-      <div class="analysis">
-        <p>🌿 Organic Matter: 18–20%</p>
-        <p>🌿 Nitrogen (N): 0.4%</p>
-        <p>🌿 Phosphorus (P): 28–30 ppm</p>
-        <p>🌿 Potassium (K): 4200–4500 ppm</p>
-        <p>🌿 Calcium (Ca): 1700–2300 ppm</p>
-        <p>🌿 Magnesium (Mg): 1700–2200 ppm</p>
-        <p>🌿 pH: 8.9–9.0</p>
-      </div>
-
-      <p class="st">What it does for your soil:</p>
-      <p><span class="check">✅</span> Restores soil fertility</p>
-      <p><span class="check">✅</span> Brings back beneficial microbes</p>
-      <p><span class="check">✅</span> Improves soil structure (better water retention & aeration)</p>
-      <p><span class="check">✅</span> Balances soil pH</p>
-      <p><span class="check">✅</span> Protects your environment — no harmful runoff</p>
-
-      <p class="st">Where can you use it?</p>
-      <p>✔ Vegetables — 200–400g per planting hole</p>
-      <p>✔ Maize — 1–2 handfuls per hole</p>
-      <p>✔ Fruit trees — 2–5kg around each tree</p>
-      <p>✔ Seedlings — mix 1:3 with soil</p>
-      <p>✔ Field crops — 1–2 tons per hectare</p>
-
-      <p class="st">Why this matters NOW</p>
-      <p>Chemical fertilizers give quick gains —<br>but destroy long-term productivity.</p>
-      <p style="margin-top:4px">Organic fertilizer builds your soil — and your profits — year after year.</p>
-      <p style="margin-top:6px">Better soil means:<br>✔ Stronger crops<br>✔ Higher yields<br>✔ Better drought resistance</p>
-
-      <div class="urgency-box">
-        <p>⏰ Planting season is coming<br>Don't wait until your crops struggle.</p>
-      </div>
-
-      <div class="cta-box">
-        <p>📩 SEND A MESSAGE NOW:</p>
-        <p>"I want to buy"</p>
-        <p class="cta-sub">Fast response. Delivery available.<br>Or visit us in Mazenod.</p>
-      </div>
-
-      <div class="contact">📍 Kabo Farmyard Fertilizer Pty Ltd<br>📍 Maseru, Lesotho<br>📞 +266 50131461 / 62779665</div>
-      <div class="tagline">Restore your soil. Grow your future.</div>
-      <div class="hashtag">#OrganicFarming #SoilHealth #KaboOrganic #FarmersFirst #HealthySoilHealthyCrops #GrowOrganic #AgricultureLesotho #SoilFertility #SustainableAgriculture #OrganicMatter</div>
-    </div>
-
-    <div class="reactions-bar">
-      <div class="reactions-left"><div class="reaction-icons"><span class="r-like">👍</span><span class="r-love">❤️</span><span class="r-care">🥺</span></div><span class="reaction-count">247</span></div>
-      <span class="reactions-right">38 comments</span>
-    </div>
-    <div class="action-btns">
-      <div class="action-btn"><i class="far fa-thumbs-up"></i><span>Like</span></div>
-      <div class="action-btn"><i class="far fa-comment"></i><span>Comment</span></div>
-      <div class="action-btn"><i class="far fa-share-square"></i><span>Share</span></div>
-    </div>
-    <div class="sponsored-line"><i class="fas fa-info-circle"></i><span>Sponsored · Paid for by Kabo Farmyard Fertilizer Pty Ltd</span></div>
-  </div>
-</div>
-
-<!-- ===== ENGLISH — MOBILE ===== -->
-<div class="ad-wrapper">
-  <p class="mobile-label"><i class="fas fa-mobile-alt"></i> Mobile Feed — English <span class="lang-badge" style="background:#1877F2">EN</span></p>
-  <div class="mobile-frame">
-    <div class="mobile-screen">
-      <div class="mobile-statusbar"><span>9:41</span><div class="mobile-statusbar-icons"><i class="fas fa-signal"></i><i class="fas fa-wifi"></i><i class="fas fa-battery-full"></i></div></div>
-      <div class="mobile-notch"></div>
-      <div class="m-post">
-        <div class="m-post-header">
-          <div class="m-avatar"><svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><circle cx="100" cy="100" r="97" fill="none" stroke="white" stroke-width="2.5"/><line x1="100" y1="108" x2="100" y2="74" stroke="white" stroke-width="2.8" stroke-linecap="round"/><ellipse cx="85" cy="84" rx="13" ry="6.5" fill="white" transform="rotate(-38 85 84)"/><ellipse cx="115" cy="84" rx="13" ry="6.5" fill="white" transform="rotate(38 115 84)"/></svg></div>
-          <div><div class="m-name">Kabo Organic Fertilizers</div><div class="m-meta"><span class="m-sponsored">Sponsored</span> · 🌱</div></div>
-          <span class="m-more"><i class="fas fa-ellipsis-h"></i></span>
-        </div>
-
-        <div class="m-image">
-          <img src="fertiliser.jpeg" alt="Kabo Organic Fertilizer 50kg bag" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="img-placeholder" style="display:none"><i class="fas fa-image"></i><span>fertiliser.jpeg</span></div>
-          <span class="m-img-badge">Sponsored</span>
-          <span class="m-img-cta">Send Message</span>
-        </div>
-
-        <div class="m-text">
-          <p><span class="hl">YOUR SOIL IS LOSING LIFE. YOUR YIELDS ARE DROPPING. DO YOU KNOW WHY?</span></p>
-
-          <p style="margin-top:6px">You've been planting for years —<br>but every season, your harvest gets smaller.</p>
-          <p style="margin-top:3px">Your soil is harder.<br>Your crops are weaker.</p>
-
-          <p style="margin-top:6px">Here's the truth:<br>chemical fertilizers give fast results — but destroy your soil over time.</p>
-          <p style="margin-top:3px">The soil loses nutrients.<br>Beneficial microbes disappear.<br>And eventually — you're farming dead soil.</p>
-
-          <p style="margin-top:6px">👉 That's why we created:<br><span class="hl">Kabo Organic Fertilizer</span></p>
-
-          <p>✔ 100% organic<br>✔ Laboratory tested<br>✔ Safe for soil, crops, and the environment</p>
-
-          <p class="st">What's inside:</p>
-          <div class="analysis">
-            <p>🌿 Organic Matter: 18–20%</p>
-            <p>🌿 Nitrogen (N): 0.4%</p>
-            <p>🌿 Phosphorus (P): 28–30 ppm</p>
-            <p>🌿 Potassium (K): 4200–4500 ppm</p>
-            <p>🌿 Calcium (Ca): 1700–2300 ppm</p>
-            <p>🌿 Magnesium (Mg): 1700–2200 ppm</p>
-            <p>🌿 pH: 8.9–9.0</p>
-          </div>
-
-          <p class="st">What it does for your soil:</p>
-          <p><span class="check">✅</span> Restores soil fertility</p>
-          <p><span class="check">✅</span> Brings back beneficial microbes</p>
-          <p><span class="check">✅</span> Improves soil structure (better water retention & aeration)</p>
-          <p><span class="check">✅</span> Balances soil pH</p>
-          <p><span class="check">✅</span> Protects your environment — no harmful runoff</p>
-
-          <p class="st">Where can you use it?</p>
-          <p>✔ Vegetables — 200–400g per hole</p>
-          <p>✔ Maize — 1–2 handfuls per hole</p>
-          <p>✔ Fruit trees — 2–5kg around each tree</p>
-          <p>✔ Seedlings — mix 1:3 with soil</p>
-          <p>✔ Field crops — 1–2 tons/ha</p>
-
-          <p class="st">Why this matters NOW</p>
-          <p>Chemical fertilizers give quick gains —<br>but destroy long-term productivity.</p>
-          <p style="margin-top:3px">Organic fertilizer builds your soil — and your profits — year after year.</p>
-          <p style="margin-top:4px">Better soil means:<br>✔ Stronger crops<br>✔ Higher yields<br>✔ Better drought resistance</p>
-
-          <div class="m-urgency">
-            <p>⏰ Planting season is coming! Don't wait until your crops struggle.</p>
-          </div>
-
-          <div class="m-cta">
-            <p>📩 SEND A MESSAGE NOW:</p>
-            <p>"I want to buy"</p>
-            <p class="m-cta-sub">Fast response. Delivery available. Or visit us in Mazenod.</p>
-          </div>
-
-          <div class="contact">📍 Kabo Farmyard Fertilizer Pty Ltd<br>📍 Maseru, Lesotho<br>📞 +266 50131461 / 62779665</div>
-          <div class="tagline">Restore your soil. Grow your future.</div>
-          <div class="hashtag">#OrganicFarming #SoilHealth #KaboOrganic #FarmersFirst #HealthySoilHealthyCrops #GrowOrganic #AgricultureLesotho</div>
-        </div>
-
-        <div class="m-react"><div class="m-react-icons"><span class="r-like">👍</span><span class="r-love">❤️</span><span class="r-care">🥺</span></div><span class="m-react-count">247</span></div>
-        <div class="m-actions">
-          <div class="m-action"><i class="far fa-thumbs-up"></i><span>Like</span></div>
-          <div class="m-action"><i class="far fa-comment"></i><span>Comment</span></div>
-          <div class="m-action"><i class="far fa-share-square"></i><span>Share</span></div>
-        </div>
-        <div class="m-spon-line"><i class="fas fa-info-circle"></i><span>Sponsored · Kabo Farmyard Fertilizer Pty Ltd</span></div>
-      </div>
-    </div>
-  </div>
-</div>
+  </div><!-- end card -->
+</div><!-- end wrap -->
 
 </body>
 </html>
